@@ -4,11 +4,21 @@
 //
 
 #import "ImportContactsViewController.h"
+#import "GoogleContactsService.h"
+#import "ObjectionExtension.h"
 
 
 @implementation ImportContactsViewController {
     NSString *googlePlusEmailId;
     NSString *googlePlusPassword;
+    GoogleContactsService *_googleContactsService;
+}
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+
+    _googleContactsService = objection_inject(GoogleContactsService)
+
 }
 
 - (void)setGooglePlusEmailId:(NSString *)email andPassword:(NSString *)password {
@@ -110,6 +120,7 @@ andImportingContactsLabel:&importingContactsLabel
     importingContactsLabel.hidden = NO;
 
     //TODO:Import Contacts and then:
+    [_googleContactsService fetchContactsByUserName:googlePlusEmailId password:googlePlusPassword];
     BOOL status = TRUE;
     [self showIndicator:statusImage forStatus:status andHide:loadingImage];
     importingContactsLabel.text = status ? @"Imported Google Plus contacts." : @"Failed importing Google Plus Contacts!";
