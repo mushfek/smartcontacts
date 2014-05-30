@@ -39,9 +39,7 @@ objection_register_singleton(ContactDao)
 }
 
 - (void)addContact:(Contact *)contact {
-
-    Contact *newContact = [[Contact alloc] init];
-    newContact = [NSEntityDescription insertNewObjectForEntityForName:@"Contact"
+    Contact *newContact = [NSEntityDescription insertNewObjectForEntityForName:@"Contact"
                                                    inManagedObjectContext:managedObjectContext];
     [_contactList addObject:newContact];
 

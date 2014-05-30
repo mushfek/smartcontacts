@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *statusImage2;
 @property (weak, nonatomic) IBOutlet UIImageView *statusImage3;
 
-- (void)setGooglePlusEmailId:(NSString *)email andPassword:(NSString *)password;
+- (void)setGooglePlusEmailId:(NSString *)email andPassword:(NSString *)password
+        andIfFacebookFriendsShouldBeImported:(BOOL)importFacebookFriends;
 
 @end

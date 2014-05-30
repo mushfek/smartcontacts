@@ -8,8 +8,8 @@
 
 @interface FacebookContactsService : NSObject
 
-- (void)loginByUserName:(NSString *)userName password:(NSString *)password andDo:(void(^)(NSError *, id))onResult;
+- (void)loginAndDo:(void(^)(NSError *, id))onResult;
 
-- (void)fetchContactsByUserName:(NSString *)userName password:(NSString *)password;
+- (void)fetchContactsAndDo:(void (^)(NSError *, id))onResult;
 
 @end

@@ -3,6 +3,7 @@
 // Copyright (c) 2014 Therap (BD) Ltd. All rights reserved.
 //
 
+#import <CMPopTipView/CMPopTipView.h>
 #import "CustomUITextField.h"
 
 const CGFloat IMAGE_PADDING = 7.0f;
@@ -85,6 +86,19 @@ const CGFloat IMAGE_PADDING = 7.0f;
             });
 
     return YES;
+}
+
+- (void)showPopTipView {
+    if (!self.popTipShown) {
+        [self.popTipView presentPointingAtView:self inView:self.controllerUiView animated:YES];
+        self.popTipShown = YES;
+    }
+}
+
+- (void)clearValidation {
+    self.popTipShown = NO;
+    self.popTipView = nil;
+    self.rightInsetIcon = nil;
 }
 
 @end

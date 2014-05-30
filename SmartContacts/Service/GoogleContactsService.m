@@ -39,7 +39,9 @@ objection_requires(@"contactDao")
     onResultBlock(error, nil);
 }
 
-- (void)fetchContactsByUserName:(NSString *)userName password:(NSString *)password {
+- (void)fetchContactsByUserName:(NSString *)userName password:(NSString *)password andDo:(void(^)(NSError *, id))onResult {
+    onResultBlock = onResult;
+
     GDataServiceGoogleContact *service = [[GDataServiceGoogleContact alloc] init];
     [service setUserCredentialsWithUsername:userName password:password];
     [service fetchContactFeedForUsername:userName
@@ -49,46 +51,52 @@ objection_requires(@"contactDao")
 
 - (void)ticket:(GDataServiceTicket *)ticket finishedWithContactFeed:(GDataFeedContact *)feed
          error:(NSError *)error {
-    Contact *contact;
-    GDataName * contactName;
-    NSUInteger counter = 11000;
+    if (error == nil) {
+        Contact *contact;
+        GDataName * contactName;
+        NSUInteger counter = 11000;
 
-    NSArray *feedEntries = [feed entries];
-    for(NSUInteger i = 0; i < [feedEntries count]; i = (i + 1) ) {
-        contactName = [[feedEntries objectAtIndex:i] name];
+        NSArray *feedEntries = [feed entries];
+        for(NSUInteger i = 0; i < [feedEntries count]; i = (i + 1) ) {
+            contactName = [[feedEntries objectAtIndex:i] name];
 
-        if (contactName.givenName.stringValue == nil
-                && contactName.familyName.stringValue == nil) {
-            continue;
+            if (contactName.givenName.stringValue == nil
+                    && contactName.familyName.stringValue == nil) {
+                continue;
+            }
+
+            contact = [Contact alloc];
+            [contact setContactId:counter];
+            counter += 1;
+            [contact setFirstName:contactName.givenName.stringValue];
+            [contact setLastName:contactName.familyName.stringValue];
+
+            [contact setNotes:nil];
+            [contact setPhones:nil];
+            [contact setOrganizations:nil];
+            [contact setMails:nil];
+            [contact setIms:nil];
+            [contact setSocialProfiles:nil];
+            [contact setUrls:nil];
+
+            NSSet *emails = [[NSSet alloc] init];
+            Mail *email;
+
+            NSArray *emailAddresses = [[feedEntries objectAtIndex:i] emailAddresses];
+            for (NSUInteger j = 0; j < [emailAddresses count]; j = (j + 1)) {
+                email = [Mail alloc];
+                [email setMailAddress:[[emailAddresses objectAtIndex:j] address]];
+                [email setType:@"Other"];
+                [emails setByAddingObject:email];
+            }
+
+            [contact setAddresses:emails];
+            [_contactDao addContact:contact];
         }
 
-        contact = [Contact alloc];
-        [contact setContactId:counter];
-        counter += 1;
-        [contact setFirstName:contactName.givenName.stringValue];
-        [contact setLastName:contactName.familyName.stringValue];
-
-        [contact setNotes:nil];
-        [contact setPhones:nil];
-        [contact setOrganizations:nil];
-        [contact setMails:nil];
-        [contact setIms:nil];
-        [contact setSocialProfiles:nil];
-        [contact setUrls:nil];
-
-        NSSet *emails = [[NSSet alloc] init];
-        Mail *email;
-
-        NSArray *emailAddresses = [[feedEntries objectAtIndex:i] emailAddresses];
-        for (NSUInteger j = 0; j < [emailAddresses count]; j = (j + 1)) {
-            email = [Mail alloc];
-            [email setMailAddress:[[emailAddresses objectAtIndex:j] address]];
-            [email setType:@"Other"];
-            [emails setByAddingObject:email];
-        }
-
-        [contact setAddresses:emails];
-        [_contactDao addContact:contact];
+        onResultBlock(nil, nil);
+    } else {
+        onResultBlock(error, nil);
     }
 }
 

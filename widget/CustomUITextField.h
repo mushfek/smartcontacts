@@ -5,6 +5,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class CMPopTipView;
+
 
 @interface CustomUITextField : UITextField
 
@@ -12,11 +14,14 @@
 * nextField is for setting which field to focus on Next button press.
 * http://stackoverflow.com/questions/1347779/how-to-navigate-through-textfields-next-done-buttons#answer-5889795
 */
-@property (nonatomic, readwrite, assign) IBOutlet UITextField *nextField;
-@property (nonatomic, weak) UIImage *leftInsetIcon;
-@property (nonatomic, weak) UIImage *rightInsetIcon;
-@property (nonatomic) int maxLength;
-@property (nonatomic, copy) NSString *allowedChars;
+@property(nonatomic, readwrite, assign) IBOutlet UITextField *nextField;
+@property(nonatomic, weak) UIImage *leftInsetIcon;
+@property(nonatomic, weak) UIImage *rightInsetIcon;
+@property(nonatomic) int maxLength;
+@property(nonatomic, copy) NSString *allowedChars;
+@property(nonatomic, weak) CMPopTipView *popTipView;
+@property(nonatomic, weak) UIView *controllerUiView;
+@property(nonatomic) BOOL popTipShown;
 
 /**
 * - Check input characters
@@ -31,5 +36,9 @@
 * http://stackoverflow.com/questions/1347779/how-to-navigate-through-textfields-next-done-buttons#answer-5889795
 */
 - (BOOL)shouldReturn;
+
+- (void)showPopTipView;
+
+- (void)clearValidation;
 
 @end

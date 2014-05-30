@@ -112,26 +112,6 @@
                                         <rect key="frame" x="0.0" y="0.0" width="318" height="504"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Facebook Password" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JLR-eg-KQN" customClass="CustomUITextField">
-                                                <rect key="frame" x="77" y="89" width="231" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="next" secureTextEntry="YES"/>
-                                                <connections>
-                                                    <outlet property="delegate" destination="9CF-IZ-pTL" id="hNb-dP-B7a"/>
-                                                    <outlet property="nextField" destination="YsK-zg-ht3" id="qpF-JA-Ifw"/>
-                                                </connections>
-                                            </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Facebook Email ID" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MyA-vi-SY6" customClass="CustomUITextField">
-                                                <rect key="frame" x="77" y="57" width="231" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
-                                                <connections>
-                                                    <outlet property="delegate" destination="9CF-IZ-pTL" id="dJp-ei-ZCc"/>
-                                                    <outlet property="nextField" destination="JLR-eg-KQN" id="ULa-vT-LsL"/>
-                                                </connections>
-                                            </textField>
                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Integrate your social network contacts with the address book." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="305" translatesAutoresizingMaskIntoConstraints="NO" id="Cnk-ci-8RU">
                                                 <rect key="frame" x="6" y="3" width="305" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -139,11 +119,11 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="FacebookLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Vz8-2b-1lp">
-                                                <rect key="frame" x="6" y="57" width="62" height="62"/>
+                                                <rect key="frame" x="8" y="129" width="62" height="62"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
                                             <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Google Plus Password" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uXv-fu-0BQ" customClass="CustomUITextField">
-                                                <rect key="frame" x="77" y="159" width="231" height="30"/>
+                                                <rect key="frame" x="79" y="91" width="231" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
@@ -152,11 +132,11 @@
                                                 </connections>
                                             </textField>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="GooglePlusLogo" translatesAutoresizingMaskIntoConstraints="NO" id="kEX-po-CYM">
-                                                <rect key="frame" x="6" y="127" width="62" height="62"/>
+                                                <rect key="frame" x="8" y="59" width="62" height="62"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             </imageView>
                                             <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Google Plus Email ID" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YsK-zg-ht3" customClass="CustomUITextField">
-                                                <rect key="frame" x="77" y="127" width="231" height="30"/>
+                                                <rect key="frame" x="79" y="59" width="231" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
@@ -165,6 +145,16 @@
                                                     <outlet property="nextField" destination="uXv-fu-0BQ" id="r6p-ov-yDQ"/>
                                                 </connections>
                                             </textField>
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Import Facebook Friend Contacts" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="137" translatesAutoresizingMaskIntoConstraints="NO" id="86K-4K-NAD">
+                                                <rect key="frame" x="79" y="136" width="137" height="48"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dkp-Lj-a7X">
+                                                <rect key="frame" x="261" y="144" width="51" height="31"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            </switch>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                     </view>
@@ -188,10 +178,9 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="facebookEmailInput" destination="MyA-vi-SY6" id="inJ-cL-QTz"/>
-                        <outlet property="facebookPasswordInput" destination="JLR-eg-KQN" id="oPe-AA-0oU"/>
                         <outlet property="googlePlusEmailInput" destination="YsK-zg-ht3" id="1gr-OW-kYW"/>
                         <outlet property="googlePlusPasswordInput" destination="uXv-fu-0BQ" id="ObH-ib-hdh"/>
+                        <outlet property="importFacebookFriendsSwitch" destination="Dkp-Lj-a7X" id="dKQ-AF-90U"/>
                         <outlet property="scrollView" destination="Lf6-86-uCc" id="AiE-zT-XYf"/>
                         <segue destination="FK4-KB-7qe" kind="push" identifier="importContacts" id="KBZ-XJ-fnd"/>
                         <segue destination="pGg-6v-bdr" kind="push" identifier="skipToContactList" id="uBp-HO-37Z"/>
@@ -269,9 +258,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Importing Contacts" id="SWJ-k2-chA">
-                        <barButtonItem key="leftBarButtonItem" title="Abort" id="inJ-UW-u2G"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Importing Contacts" id="SWJ-k2-chA"/>
                     <connections>
                         <outlet property="importingContactsLabel1" destination="Zbt-iQ-qq1" id="eXR-3S-pYw"/>
                         <outlet property="importingContactsLabel2" destination="CiR-Yj-ZF1" id="fSW-Wk-cUk"/>

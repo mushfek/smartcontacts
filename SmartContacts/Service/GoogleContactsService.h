@@ -10,6 +10,6 @@
 
 - (void)loginByUserName:(NSString *)userName password:(NSString *)password andDo:(void(^)(NSError *, id))onResult;
 
-- (void)fetchContactsByUserName:(NSString *)userName password:(NSString *)password;
+- (void)fetchContactsByUserName:(NSString *)userName password:(NSString *)password andDo:(void(^)(NSError *, id))onResult;
 
 @end
