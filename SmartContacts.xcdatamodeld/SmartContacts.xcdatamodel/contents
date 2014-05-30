@@ -1,9 +1,67 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="Test1.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Event">
-        <attribute name="timeStamp" optional="YES" attributeType="Date"/>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13D65" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Address" syncable="YES">
+        <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="street" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="zipCode" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="contacts" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Contact" inverseName="addresses" inverseEntity="Contact" syncable="YES"/>
+    </entity>
+    <entity name="Contact">
+        <attribute name="contactId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="photo" optional="YES" attributeType="Binary" syncable="YES"/>
+        <relationship name="addresses" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Address" inverseName="contacts" inverseEntity="Address" syncable="YES"/>
+        <relationship name="ims" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Im" inverseName="contacts" inverseEntity="Im" syncable="YES"/>
+        <relationship name="mails" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Mail" inverseName="contacts" inverseEntity="Mail" syncable="YES"/>
+        <relationship name="organizations" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Organization" inverseName="contacts" inverseEntity="Organization" syncable="YES"/>
+        <relationship name="phones" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Phone" inverseName="contacts" inverseEntity="Phone" syncable="YES"/>
+        <relationship name="socialProfiles" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SocialProfile" inverseName="contacts" inverseEntity="SocialProfile" syncable="YES"/>
+        <relationship name="urls" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Url" inverseName="contacts" inverseEntity="Url" syncable="YES"/>
+        <userInfo/>
+    </entity>
+    <entity name="Im" syncable="YES">
+        <attribute name="imId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="contacts" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Contact" inverseName="ims" inverseEntity="Contact" syncable="YES"/>
+    </entity>
+    <entity name="Mail" syncable="YES">
+        <attribute name="mailAddress" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="contacts" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Contact" inverseName="mails" inverseEntity="Contact" syncable="YES"/>
+    </entity>
+    <entity name="Organization" syncable="YES">
+        <attribute name="company" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="contacts" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Contact" inverseName="organizations" inverseEntity="Contact" syncable="YES"/>
+    </entity>
+    <entity name="Phone" syncable="YES">
+        <attribute name="phoneNumber" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="contacts" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Contact" inverseName="phones" inverseEntity="Contact" syncable="YES"/>
+    </entity>
+    <entity name="SocialProfile" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="contacts" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Contact" inverseName="socialProfiles" inverseEntity="Contact" syncable="YES"/>
+    </entity>
+    <entity name="Url" syncable="YES">
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="contacts" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Contact" inverseName="urls" inverseEntity="Contact" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Event" positionX="261" positionY="189" width="128" height="60"/>
+        <element name="Contact" positionX="-236" positionY="2" width="128" height="223"/>
+        <element name="Address" positionX="-450" positionY="-54" width="128" height="133"/>
+        <element name="Im" positionX="-72" positionY="-54" width="128" height="88"/>
+        <element name="Mail" positionX="36" positionY="263" width="128" height="88"/>
+        <element name="Organization" positionX="-18" positionY="383" width="128" height="103"/>
+        <element name="Phone" positionX="-245" positionY="315" width="128" height="88"/>
+        <element name="SocialProfile" positionX="79" positionY="11" width="128" height="88"/>
+        <element name="Url" positionX="88" positionY="144" width="128" height="88"/>
     </elements>
 </model>

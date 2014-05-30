@@ -13,4 +13,8 @@
 
 - (Contact *)contactAtIndex:(NSUInteger)index;
 
+- (void)addContact:(Contact *)contact;
+
+- (Contact *)getContactById:(Contact *)contact;
+
 @end
