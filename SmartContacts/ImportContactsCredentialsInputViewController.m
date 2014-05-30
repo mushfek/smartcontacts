@@ -11,6 +11,7 @@
 #import "FacebookContactsService.h"
 #import "CMPopTipView.h"
 #import "NSString+FormInputValidation.h"
+#import "ImportContactsViewController.h"
 
 
 @implementation ImportContactsCredentialsInputViewController {
@@ -63,7 +64,6 @@
 
 - (BOOL)validateForm {
     BOOL errorOccurred = false;
-    CMPopTipView *popTipView;
     [self clearRightIconsOfTextFields];
 
     if (![_facebookEmailInput.text isNotEmpty] && ![_facebookPasswordInput.text isNotEmpty]
@@ -81,14 +81,14 @@
             self.facebookEmailInput.rightInsetIcon = [UIImage imageNamed:@"Failure"];
 
             [self addPopTipViewForTextField:_facebookEmailInput
-                                             withMessage:@"Invalid email id"];
+                                withMessage:@"Invalid email id"];
             errorOccurred = true;
         } else if ([_facebookEmailInput.text isNotEmpty] && ![_facebookPasswordInput.text isNotEmpty]) {
             self.facebookPasswordInput.rightInsetIcon = [UIImage imageNamed:@"Failure"];
 
             [self addPopTipViewForTextField:_facebookPasswordInput withMessage:@"Enter your password"];
             errorOccurred = true;
-        } else if (![_facebookEmailInput.text isNotEmpty] && [_facebookPasswordInput isNotEmpty]) {
+        } else if (![_facebookEmailInput.text isNotEmpty] && [_facebookPasswordInput.text isNotEmpty]) {
             self.facebookEmailInput.rightInsetIcon = [UIImage imageNamed:@"Failure"];
 
             [self addPopTipViewForTextField:_facebookEmailInput withMessage:@"Enter your email id"];
@@ -109,7 +109,7 @@
 
             if (!errorOccurred) {
                 [self addPopTipViewForTextField:_googlePlusPasswordInput
-                                                 withMessage:@"Enter your password"];
+                                    withMessage:@"Enter your password"];
             }
 
             errorOccurred = true;
@@ -127,7 +127,7 @@
     return errorOccurred;
 }
 
--(void)clearRightIconsOfTextFields {
+- (void)clearRightIconsOfTextFields {
     self.facebookEmailInput.rightInsetIcon = nil;
     self.facebookPasswordInput.rightInsetIcon = nil;
     self.googlePlusEmailInput.rightInsetIcon = nil;
@@ -145,7 +145,7 @@
                     self.googlePlusPasswordInput.text = @"";
                     self.googlePlusEmailInput.rightInsetIcon = [UIImage imageNamed:@"Failure"];
                     [self addPopTipViewForTextField:_googlePlusEmailInput
-                                                                   withMessage:@"Enter proper email id & password"];
+                                        withMessage:@"Enter proper email id & password"];
                 } else if ([error code] == -1009) {
                     //TODO: show alert msg to connect to internet
                 } else {
@@ -153,7 +153,7 @@
                     self.googlePlusPasswordInput.text = @"";
                     self.googlePlusEmailInput.rightInsetIcon = [UIImage imageNamed:@"Failure"];
                     [self addPopTipViewForTextField:_googlePlusEmailInput
-                                                                   withMessage:@"Enter occurred"];
+                                        withMessage:@"Enter occurred"];
 
                     NSLog(@"Unknow error occurred");
                 }
@@ -171,8 +171,8 @@
 - (void)loginFacebook {
     if ([self.facebookEmailInput.text isNotEmpty]) {
         [_facebookContactsService loginByUserName:self.facebookEmailInput.text
-                                       password:self.facebookPasswordInput.text
-                                          andDo:^(NSError *error, id resultObject) {
+                                         password:self.facebookPasswordInput.text
+                                            andDo:^(NSError *error, id resultObject) {
             if (error) {
                 //TODO: Show error in text field
                 NSLog(@"%@", error);
@@ -203,15 +203,46 @@
     [popTipView presentPointingAtView:textField inView:self.view animated:YES];
 }
 
-- (void) prepareForMovingToContactImportView {
+- (void)prepareForMovingToContactImportView {
     NSLog(@"All OK!");
     [self saveCredentials];
     [self performSegueWithIdentifier:@"importContacts" sender:self];
 }
 
 - (void)saveCredentials {
-    //TODO
+    BOOL doesExist;
+    NSError *error;
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"Credentials" ofType:@"plist"];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *path = [[NSString alloc] initWithString:[documentsDirectory
+            stringByAppendingPathComponent:@"Credentials.plist"]];
+
+    doesExist = [fileManager fileExistsAtPath:path];
+    NSMutableDictionary *plistDict;
+    if (doesExist) {
+        plistDict = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
+    } else {
+        [fileManager copyItemAtPath:filePath toPath:path error:&error];
+        plistDict = [[NSMutableDictionary alloc] initWithContentsOfFile:filePath];
+    }
+
+    NSLog(@"Google Plus Email ID %@", [plistDict valueForKey:@"googlePlusEmailId"]);
+    [plistDict setObject:self.googlePlusEmailInput.text forKey:@"googlePlusEmailId"];
+    [plistDict setObject:self.googlePlusPasswordInput.text forKey:@"googlePlusPassword"];
+
+    [plistDict writeToFile:path atomically:YES];
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"importContacts"]) {
+        ImportContactsViewController *viewController
+                = (ImportContactsViewController *) [segue destinationViewController];
+        [viewController setGooglePlusEmailId:self.googlePlusEmailInput.text andPassword:self.googlePlusPasswordInput.text];
+    }
+}
+
 
 #pragma mark UITextFieldDelegate methods
 

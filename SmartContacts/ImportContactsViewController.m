@@ -6,7 +6,15 @@
 #import "ImportContactsViewController.h"
 
 
-@implementation ImportContactsViewController
+@implementation ImportContactsViewController {
+    NSString *googlePlusEmailId;
+    NSString *googlePlusPassword;
+}
+
+- (void)setGooglePlusEmailId:(NSString *)email andPassword:(NSString *)password {
+    googlePlusEmailId = email;
+    googlePlusPassword = password;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -37,8 +45,7 @@
 }
 
 - (BOOL)shouldImportGoogleContacts {
-    //TODO
-    return YES;
+    return googlePlusEmailId != nil;
 }
 
 - (void)importPhoneContacts {
@@ -62,7 +69,7 @@ andImportingContactsLabel:&importingContactsLabel
     [self showLoadingIndicator:loadingImage];
     importingContactsLabel.hidden = NO;
 
-    //Import Contacts and then:
+    //TODO:Import Contacts and then:
     BOOL status = FALSE;
     [self showIndicator:statusImage forStatus:status andHide:loadingImage];
     importingContactsLabel.text = status ? @"Imported Facebook contacts." : @"Failed importing Facebook Contacts!";
@@ -102,7 +109,7 @@ andImportingContactsLabel:&importingContactsLabel
     [self showLoadingIndicator:loadingImage];
     importingContactsLabel.hidden = NO;
 
-    //Import Contacts and then:
+    //TODO:Import Contacts and then:
     BOOL status = TRUE;
     [self showIndicator:statusImage forStatus:status andHide:loadingImage];
     importingContactsLabel.text = status ? @"Imported Google Plus contacts." : @"Failed importing Google Plus Contacts!";
