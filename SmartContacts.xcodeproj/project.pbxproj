@@ -24,6 +24,7 @@
 		D3841D2D60AB295218552881 /* NSString+NSStringExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = D384195F32819DB5F7FC691D /* NSString+NSStringExtension.m */; };
 		D3841E4A705891FDFFC0C406 /* GoogleContactsService.m in Sources */ = {isa = PBXBuildFile; fileRef = D38417E2EECACD4750A63D7F /* GoogleContactsService.m */; };
 		D3A9626454F3A82AC21EFD9E /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = D3A96A3BF47F76EA3ED4A00E /* Podfile */; };
+		D3A964B9A679DB4C7C3FB80D /* ContactListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D3A966E6F1C01BA8A5CAA88E /* ContactListTableViewCell.m */; };
 		D3A966F3CF79D877DC202BE2 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = D3A96D9F8E4E00E15A35A265 /* .gitignore */; };
 		D3A96775542AB41EE107E04F /* CustomUITextField.m in Sources */ = {isa = PBXBuildFile; fileRef = D3A962267730B83A50443E99 /* CustomUITextField.m */; };
 		D3A969ECC87FF30659BF31AC /* ImportContactsCredentialsInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3A9628C0CA4B76E99304FF4 /* ImportContactsCredentialsInputViewController.m */; };
@@ -99,7 +100,9 @@
 		D3A9607A0911B73A060D1E73 /* ImportContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImportContactsViewController.h; sourceTree = "<group>"; };
 		D3A962267730B83A50443E99 /* CustomUITextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomUITextField.m; sourceTree = "<group>"; };
 		D3A9628C0CA4B76E99304FF4 /* ImportContactsCredentialsInputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImportContactsCredentialsInputViewController.m; sourceTree = "<group>"; };
+		D3A966E6F1C01BA8A5CAA88E /* ContactListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactListTableViewCell.m; sourceTree = "<group>"; };
 		D3A9671E6BC0C9ADF87BF791 /* ImportContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImportContactsViewController.m; sourceTree = "<group>"; };
+		D3A96826BDAF2F249008863A /* ContactListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactListTableViewCell.h; sourceTree = "<group>"; };
 		D3A969961C9D5DA56F7CAC11 /* CustomUITextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomUITextField.h; sourceTree = "<group>"; };
 		D3A96A3BF47F76EA3ED4A00E /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		D3A96B844EE3F64D75427095 /* ImportContactsCredentialsInputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImportContactsCredentialsInputViewController.h; sourceTree = "<group>"; };
@@ -298,6 +301,8 @@
 				D38418772C962478B7190756 /* Service */,
 				D38413CAF14EAE87A3E83610 /* utils */,
 				D3841921BBB9690B3D540387 /* category */,
+				D3A966E6F1C01BA8A5CAA88E /* ContactListTableViewCell.m */,
+				D3A96826BDAF2F249008863A /* ContactListTableViewCell.h */,
 			);
 			path = SmartContacts;
 			sourceTree = "<group>";
@@ -492,6 +497,7 @@
 				36EBCC8B70DD385E43012293 /* SocialProfile.m in Sources */,
 				36EBC8600303F358AD76AAB0 /* SmartContacts.xcdatamodeld in Sources */,
 				D384122C9E94140E3563A71C /* NSString+FormInputValidation.m in Sources */,
+				D3A964B9A679DB4C7C3FB80D /* ContactListTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
