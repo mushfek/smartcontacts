@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		36EBC032CF7EDF57E287A0E1 /* Phone.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EBC096D63DC1EC0C0FD14D /* Phone.m */; };
+		36EBC238DB4475CEDEF80629 /* Mail.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EBCCE1FD7A24EC8D0204DE /* Mail.m */; };
+		36EBC71EF3D60A32CA4A5326 /* Organization.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EBC0231F7C599C4E4D2CFA /* Organization.m */; };
+		36EBC8600303F358AD76AAB0 /* SmartContacts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 36EBC1AD916955AFC814BEC0 /* SmartContacts.xcdatamodeld */; };
+		36EBCC8B70DD385E43012293 /* SocialProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EBC15A1BB476F143042505 /* SocialProfile.m */; };
+		36EBCD49F5125ED53FAA3FDB /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EBCFC4526D985AEC9818A8 /* Contact.m */; };
+		36EBCDACA9F136427752FA8F /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EBC2C5D102ADFBB22A4550 /* Address.m */; };
+		36EBCF38C446EA683923C3A2 /* ContactDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EBCB6C0E2894F20D0F5FE7 /* ContactDao.m */; };
+		36EBCF4C553FCC3FC710E793 /* Im.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EBC6859F88AF811D40FA5A /* Im.m */; };
+		36EBCF576CA3895686802F5E /* Url.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EBC4DDCEAE50F833F212B3 /* Url.m */; };
 		D384133B23D82C7EE41971AE /* FacebookContactsService.m in Sources */ = {isa = PBXBuildFile; fileRef = D3841BB6EDF6EBAE4615497D /* FacebookContactsService.m */; };
 		D3841C4E2EAF8ECB2D18CD98 /* NSObject+NSObjectExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = D3841F68BF78FF772E1DEBD8 /* NSObject+NSObjectExtension.m */; };
 		D3841D2D60AB295218552881 /* NSString+NSStringExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = D384195F32819DB5F7FC691D /* NSString+NSStringExtension.m */; };
@@ -53,6 +63,25 @@
 
 /* Begin PBXFileReference section */
 		0065458B25A74EE694F03553 /* libPods-SmartContacts.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SmartContacts.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		36EBC0231F7C599C4E4D2CFA /* Organization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Organization.m; sourceTree = "<group>"; };
+		36EBC096D63DC1EC0C0FD14D /* Phone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Phone.m; sourceTree = "<group>"; };
+		36EBC14F854D3DF51083751C /* ContactDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactDao.h; sourceTree = "<group>"; };
+		36EBC15A1BB476F143042505 /* SocialProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialProfile.m; sourceTree = "<group>"; };
+		36EBC210993BDD34843A54C4 /* SocialProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialProfile.h; sourceTree = "<group>"; };
+		36EBC2C5D102ADFBB22A4550 /* Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Address.m; sourceTree = "<group>"; };
+		36EBC2C78A18A12036F170D1 /* Mail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mail.h; sourceTree = "<group>"; };
+		36EBC2DC8405012503383885 /* SmartContacts.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SmartContacts.xcdatamodel; sourceTree = "<group>"; };
+		36EBC316CE0EF52D22C1A879 /* Url.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Url.h; sourceTree = "<group>"; };
+		36EBC3D874BD4E33B8167FA2 /* Im.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Im.h; sourceTree = "<group>"; };
+		36EBC440B60102D419BF3108 /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
+		36EBC4DDCEAE50F833F212B3 /* Url.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Url.m; sourceTree = "<group>"; };
+		36EBC53692AAA9DC1924B208 /* Phone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Phone.h; sourceTree = "<group>"; };
+		36EBC6859F88AF811D40FA5A /* Im.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Im.m; sourceTree = "<group>"; };
+		36EBCB6C0E2894F20D0F5FE7 /* ContactDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactDao.m; sourceTree = "<group>"; };
+		36EBCC07F0F6ACB723FDB0B6 /* Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Address.h; sourceTree = "<group>"; };
+		36EBCCE1FD7A24EC8D0204DE /* Mail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mail.m; sourceTree = "<group>"; };
+		36EBCD7F727516F98AC2AAFC /* Organization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Organization.h; sourceTree = "<group>"; };
+		36EBCFC4526D985AEC9818A8 /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
 		C37ECF0A88EF414C98E05F11 /* Pods-SmartContacts.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartContacts.xcconfig"; path = "Pods/Pods-SmartContacts.xcconfig"; sourceTree = "<group>"; };
 		D38412F39E7485F60AB5F0AE /* ObjectionExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectionExtension.h; sourceTree = "<group>"; };
 		D38416179AB4DC3F8B866ABF /* NSObject+NSObjectExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+NSObjectExtension.h"; sourceTree = "<group>"; };
@@ -131,6 +160,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		36EBC6C041A954C7B8429501 /* domain */ = {
+			isa = PBXGroup;
+			children = (
+				36EBC3D874BD4E33B8167FA2 /* Im.h */,
+				36EBC6859F88AF811D40FA5A /* Im.m */,
+				36EBC316CE0EF52D22C1A879 /* Url.h */,
+				36EBC4DDCEAE50F833F212B3 /* Url.m */,
+				36EBC2C78A18A12036F170D1 /* Mail.h */,
+				36EBCCE1FD7A24EC8D0204DE /* Mail.m */,
+				36EBC53692AAA9DC1924B208 /* Phone.h */,
+				36EBC096D63DC1EC0C0FD14D /* Phone.m */,
+				36EBCC07F0F6ACB723FDB0B6 /* Address.h */,
+				36EBC2C5D102ADFBB22A4550 /* Address.m */,
+				36EBC440B60102D419BF3108 /* Contact.h */,
+				36EBCFC4526D985AEC9818A8 /* Contact.m */,
+				36EBCD7F727516F98AC2AAFC /* Organization.h */,
+				36EBC0231F7C599C4E4D2CFA /* Organization.m */,
+				36EBC210993BDD34843A54C4 /* SocialProfile.h */,
+				36EBC15A1BB476F143042505 /* SocialProfile.m */,
+			);
+			path = domain;
+			sourceTree = "<group>";
+		};
+		36EBCBB0C2BDC4253B559630 /* dao */ = {
+			isa = PBXGroup;
+			children = (
+				36EBC14F854D3DF51083751C /* ContactDao.h */,
+				36EBCB6C0E2894F20D0F5FE7 /* ContactDao.m */,
+			);
+			path = dao;
+			sourceTree = "<group>";
+		};
 		D38413CAF14EAE87A3E83610 /* utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -181,6 +242,9 @@
 				D3A96D9F8E4E00E15A35A265 /* .gitignore */,
 				C37ECF0A88EF414C98E05F11 /* Pods-SmartContacts.xcconfig */,
 				D3A960162BC201031ECAB3FF /* widget */,
+				36EBCBB0C2BDC4253B559630 /* dao */,
+				36EBC6C041A954C7B8429501 /* domain */,
+				36EBC1AD916955AFC814BEC0 /* SmartContacts.xcdatamodeld */,
 			);
 			sourceTree = "<group>";
 		};
@@ -414,6 +478,16 @@
 				D3841C4E2EAF8ECB2D18CD98 /* NSObject+NSObjectExtension.m in Sources */,
 				D3841D2D60AB295218552881 /* NSString+NSStringExtension.m in Sources */,
 				D384133B23D82C7EE41971AE /* FacebookContactsService.m in Sources */,
+				36EBCF38C446EA683923C3A2 /* ContactDao.m in Sources */,
+				36EBCF4C553FCC3FC710E793 /* Im.m in Sources */,
+				36EBCF576CA3895686802F5E /* Url.m in Sources */,
+				36EBC238DB4475CEDEF80629 /* Mail.m in Sources */,
+				36EBC032CF7EDF57E287A0E1 /* Phone.m in Sources */,
+				36EBCDACA9F136427752FA8F /* Address.m in Sources */,
+				36EBCD49F5125ED53FAA3FDB /* Contact.m in Sources */,
+				36EBC71EF3D60A32CA4A5326 /* Organization.m in Sources */,
+				36EBCC8B70DD385E43012293 /* SocialProfile.m in Sources */,
+				36EBC8600303F358AD76AAB0 /* SmartContacts.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -636,6 +710,16 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
+		36EBC1AD916955AFC814BEC0 /* SmartContacts.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				36EBC2DC8405012503383885 /* SmartContacts.xcdatamodel */,
+			);
+			currentVersion = 36EBC2DC8405012503383885 /* SmartContacts.xcdatamodel */;
+			path = SmartContacts.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
 		E88CDD6319383CDD00A30DB7 /* SmartContacts.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (

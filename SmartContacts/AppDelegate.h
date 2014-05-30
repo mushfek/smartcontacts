@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#define get_managed_object_context() [(AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
