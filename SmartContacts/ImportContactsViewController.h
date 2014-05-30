@@ -5,14 +5,16 @@
 
 #import <Foundation/Foundation.h>
 
-
 @interface ImportContactsViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UILabel *importingContactsLabel1;
-@property (weak, nonatomic) IBOutlet UIImageView *loadingImage1;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingImage1;
 @property (weak, nonatomic) IBOutlet UILabel *importingContactsLabel2;
-@property (weak, nonatomic) IBOutlet UIImageView *loadingImage2;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingImage2;
 @property (weak, nonatomic) IBOutlet UILabel *importingContactsLabel3;
-@property (weak, nonatomic) IBOutlet UIImageView *loadingImage3;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingImage3;
+@property (weak, nonatomic) IBOutlet UIImageView *statusImage1;
+@property (weak, nonatomic) IBOutlet UIImageView *statusImage2;
+@property (weak, nonatomic) IBOutlet UIImageView *statusImage3;
 
 @end
