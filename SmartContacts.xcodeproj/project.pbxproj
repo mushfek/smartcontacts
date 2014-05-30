@@ -17,6 +17,8 @@
 		36EBCF38C446EA683923C3A2 /* ContactDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EBCB6C0E2894F20D0F5FE7 /* ContactDao.m */; };
 		36EBCF4C553FCC3FC710E793 /* Im.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EBC6859F88AF811D40FA5A /* Im.m */; };
 		36EBCF576CA3895686802F5E /* Url.m in Sources */ = {isa = PBXBuildFile; fileRef = 36EBC4DDCEAE50F833F212B3 /* Url.m */; };
+		BB246EA41938EE46004AA726 /* Credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB246EA31938EE46004AA726 /* Credentials.plist */; };
+		D384122C9E94140E3563A71C /* NSString+FormInputValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = D384123DF1F59EC500C61840 /* NSString+FormInputValidation.m */; };
 		D384133B23D82C7EE41971AE /* FacebookContactsService.m in Sources */ = {isa = PBXBuildFile; fileRef = D3841BB6EDF6EBAE4615497D /* FacebookContactsService.m */; };
 		D3841C4E2EAF8ECB2D18CD98 /* NSObject+NSObjectExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = D3841F68BF78FF772E1DEBD8 /* NSObject+NSObjectExtension.m */; };
 		D3841D2D60AB295218552881 /* NSString+NSStringExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = D384195F32819DB5F7FC691D /* NSString+NSStringExtension.m */; };
@@ -81,12 +83,15 @@
 		36EBCCE1FD7A24EC8D0204DE /* Mail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mail.m; sourceTree = "<group>"; };
 		36EBCD7F727516F98AC2AAFC /* Organization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Organization.h; sourceTree = "<group>"; };
 		36EBCFC4526D985AEC9818A8 /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
+		BB246EA31938EE46004AA726 /* Credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Credentials.plist; sourceTree = "<group>"; };
 		C37ECF0A88EF414C98E05F11 /* Pods-SmartContacts.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartContacts.xcconfig"; path = "Pods/Pods-SmartContacts.xcconfig"; sourceTree = "<group>"; };
+		D384123DF1F59EC500C61840 /* NSString+FormInputValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FormInputValidation.m"; sourceTree = "<group>"; };
 		D38412F39E7485F60AB5F0AE /* ObjectionExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectionExtension.h; sourceTree = "<group>"; };
 		D38416179AB4DC3F8B866ABF /* NSObject+NSObjectExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+NSObjectExtension.h"; sourceTree = "<group>"; };
 		D384173943C09A46B121D87B /* GoogleContactsService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleContactsService.h; sourceTree = "<group>"; };
 		D38417E2EECACD4750A63D7F /* GoogleContactsService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleContactsService.m; sourceTree = "<group>"; };
 		D38418D02D464FDBB183C861 /* FacebookContactsService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookContactsService.h; sourceTree = "<group>"; };
+		D38419578284782B1DCDFF07 /* NSString+FormInputValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FormInputValidation.h"; sourceTree = "<group>"; };
 		D384195F32819DB5F7FC691D /* NSString+NSStringExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+NSStringExtension.m"; sourceTree = "<group>"; };
 		D3841BB6EDF6EBAE4615497D /* FacebookContactsService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookContactsService.m; sourceTree = "<group>"; };
 		D3841D8670C1F81953052D34 /* NSString+NSStringExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+NSStringExtension.h"; sourceTree = "<group>"; };
@@ -216,6 +221,8 @@
 				D3841F68BF78FF772E1DEBD8 /* NSObject+NSObjectExtension.m */,
 				D3841D8670C1F81953052D34 /* NSString+NSStringExtension.h */,
 				D384195F32819DB5F7FC691D /* NSString+NSStringExtension.m */,
+				D384123DF1F59EC500C61840 /* NSString+FormInputValidation.m */,
+				D38419578284782B1DCDFF07 /* NSString+FormInputValidation.h */,
 			);
 			path = category;
 			sourceTree = "<group>";
@@ -302,6 +309,7 @@
 				E88CDD5719383CDD00A30DB7 /* InfoPlist.strings */,
 				E88CDD5A19383CDD00A30DB7 /* main.m */,
 				E88CDD5C19383CDD00A30DB7 /* SmartContacts-Prefix.pch */,
+				BB246EA31938EE46004AA726 /* Credentials.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -408,6 +416,7 @@
 				E88CDD6D19383CDD00A30DB7 /* Images.xcassets in Resources */,
 				E88CDD5919383CDD00A30DB7 /* InfoPlist.strings in Resources */,
 				E88CDD6219383CDD00A30DB7 /* Main.storyboard in Resources */,
+				BB246EA41938EE46004AA726 /* Credentials.plist in Resources */,
 				D3A9626454F3A82AC21EFD9E /* Podfile in Resources */,
 				D3A966F3CF79D877DC202BE2 /* .gitignore in Resources */,
 			);
@@ -482,6 +491,7 @@
 				36EBC71EF3D60A32CA4A5326 /* Organization.m in Sources */,
 				36EBCC8B70DD385E43012293 /* SocialProfile.m in Sources */,
 				36EBC8600303F358AD76AAB0 /* SmartContacts.xcdatamodeld in Sources */,
+				D384122C9E94140E3563A71C /* NSString+FormInputValidation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

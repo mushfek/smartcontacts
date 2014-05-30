@@ -9,6 +9,8 @@
 #import "ObjectionExtension.h"
 #import "NSObject+NSObjectExtension.h"
 #import "FacebookContactsService.h"
+#import "CMPopTipView.h"
+#import "NSString+FormInputValidation.h"
 
 
 @implementation ImportContactsCredentialsInputViewController {
@@ -54,14 +56,82 @@
 }
 
 - (IBAction)importContacts:(id)sender {
-    if ([self validateForm]) {
+    if (![self validateForm]) {
         [self loginGooglePlus];
     }
 }
 
 - (BOOL)validateForm {
-    //TODO
-    return YES;
+    BOOL errorOccurred = false;
+    CMPopTipView *popTipView;
+    [self clearRightIconsOfTextFields];
+
+    if (![_facebookEmailInput.text isNotEmpty] && ![_facebookPasswordInput.text isNotEmpty]
+            && ![_googlePlusEmailInput.text isNotEmpty] && ![_googlePlusPasswordInput.text isNotEmpty]) {
+        self.facebookEmailInput.rightInsetIcon = [UIImage imageNamed:@"Failure"];
+        self.facebookPasswordInput.rightInsetIcon = [UIImage imageNamed:@"Failure"];
+        self.googlePlusEmailInput.rightInsetIcon = [UIImage imageNamed:@"Failure"];
+        self.googlePlusPasswordInput.rightInsetIcon = [UIImage imageNamed:@"Failure"];
+
+        [self addPopTipViewForTextField:_facebookEmailInput withMessage:@"Enter your email id"];
+
+        return true;
+    } else {
+        if ([_facebookEmailInput.text isNotEmpty] && ![_facebookEmailInput.text isValidEmailAddressString]) {
+            self.facebookEmailInput.rightInsetIcon = [UIImage imageNamed:@"Failure"];
+
+            [self addPopTipViewForTextField:_facebookEmailInput
+                                             withMessage:@"Invalid email id"];
+            errorOccurred = true;
+        } else if ([_facebookEmailInput.text isNotEmpty] && ![_facebookPasswordInput.text isNotEmpty]) {
+            self.facebookPasswordInput.rightInsetIcon = [UIImage imageNamed:@"Failure"];
+
+            [self addPopTipViewForTextField:_facebookPasswordInput withMessage:@"Enter your password"];
+            errorOccurred = true;
+        } else if (![_facebookEmailInput.text isNotEmpty] && [_facebookPasswordInput isNotEmpty]) {
+            self.facebookEmailInput.rightInsetIcon = [UIImage imageNamed:@"Failure"];
+
+            [self addPopTipViewForTextField:_facebookEmailInput withMessage:@"Enter your email id"];
+            errorOccurred = true;
+        }
+
+        if ([_googlePlusEmailInput.text isNotEmpty] && ![_googlePlusEmailInput.text isValidEmailAddressString]) {
+            self.googlePlusEmailInput.rightInsetIcon = [UIImage imageNamed:@"Failure"];
+
+            if (!errorOccurred) {
+                [self addPopTipViewForTextField:_googlePlusEmailInput
+                                    withMessage:@"Invalid email id"];
+            }
+
+            errorOccurred = true;
+        } else if ([_googlePlusEmailInput.text isNotEmpty] && ![_googlePlusPasswordInput.text isNotEmpty]) {
+            self.googlePlusPasswordInput.rightInsetIcon = [UIImage imageNamed:@"Failure"];
+
+            if (!errorOccurred) {
+                [self addPopTipViewForTextField:_googlePlusPasswordInput
+                                                 withMessage:@"Enter your password"];
+            }
+
+            errorOccurred = true;
+        } else if (![_googlePlusEmailInput.text isNotEmpty] && [_googlePlusPasswordInput.text isNotEmpty]) {
+            self.googlePlusEmailInput.rightInsetIcon = [UIImage imageNamed:@"Failure"];
+
+            if (!errorOccurred) {
+                [self addPopTipViewForTextField:_googlePlusEmailInput
+                                    withMessage:@"Enter your email id"];
+            }
+
+            errorOccurred = true;
+        }
+    }
+    return errorOccurred;
+}
+
+-(void)clearRightIconsOfTextFields {
+    self.facebookEmailInput.rightInsetIcon = nil;
+    self.facebookPasswordInput.rightInsetIcon = nil;
+    self.googlePlusEmailInput.rightInsetIcon = nil;
+    self.googlePlusPasswordInput.rightInsetIcon = nil;
 }
 
 - (void)loginGooglePlus {
@@ -70,12 +140,22 @@
                                        password:self.googlePlusPasswordInput.text
                                           andDo:^(NSError *error, id resultObject) {
             if (error) {
+                [self clearRightIconsOfTextFields];
                 if ([error code] == 403) {
-                    //TODO: Show error in text field
+                    self.googlePlusPasswordInput.text = @"";
+                    self.googlePlusEmailInput.rightInsetIcon = [UIImage imageNamed:@"Failure"];
+                    [self addPopTipViewForTextField:_googlePlusEmailInput
+                                                                   withMessage:@"Enter proper email id & password"];
                 } else if ([error code] == -1009) {
                     //TODO: show alert msg to connect to internet
                 } else {
                     //TODO: show alert msg with unknown error and log to console.
+                    self.googlePlusPasswordInput.text = @"";
+                    self.googlePlusEmailInput.rightInsetIcon = [UIImage imageNamed:@"Failure"];
+                    [self addPopTipViewForTextField:_googlePlusEmailInput
+                                                                   withMessage:@"Enter occurred"];
+
+                    NSLog(@"Unknow error occurred");
                 }
                 NSLog(@"%@", error);
 
@@ -103,6 +183,24 @@
     } else {
         [self prepareForMovingToContactImportView];
     }
+}
+
+- (void)addPopTipViewForTextField:(UITextField *)textField withMessage:(NSString *)message {
+    CMPopTipView *popTipView;
+
+    popTipView = [[CMPopTipView alloc] initWithMessage:message];
+    popTipView.textColor = [UIColor colorWithRed:(CGFloat) (169 / 255.0)
+                                           green:(CGFloat) (68 / 255.0)
+                                            blue:(CGFloat) (66 / 255.0)
+                                           alpha:1];
+    popTipView.borderColor = popTipView.textColor;
+    popTipView.backgroundColor = [UIColor colorWithRed:(CGFloat) (242 / 255.0)
+                                                 green:(CGFloat) (222 / 255.0)
+                                                  blue:(CGFloat) (222 / 255.0)
+                                                 alpha:1];
+    popTipView.hasGradientBackground = NO;
+
+    [popTipView presentPointingAtView:textField inView:self.view animated:YES];
 }
 
 - (void) prepareForMovingToContactImportView {
