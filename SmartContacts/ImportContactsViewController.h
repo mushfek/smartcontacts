@@ -7,4 +7,12 @@
 
 
 @interface ImportContactsViewController : UIViewController
+
+@property (weak, nonatomic) IBOutlet UILabel *importingContactsLabel1;
+@property (weak, nonatomic) IBOutlet UIImageView *loadingImage1;
+@property (weak, nonatomic) IBOutlet UILabel *importingContactsLabel2;
+@property (weak, nonatomic) IBOutlet UIImageView *loadingImage2;
+@property (weak, nonatomic) IBOutlet UILabel *importingContactsLabel3;
+@property (weak, nonatomic) IBOutlet UIImageView *loadingImage3;
+
 @end

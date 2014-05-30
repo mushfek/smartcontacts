@@ -6,5 +6,11 @@
 #import <Foundation/Foundation.h>
 
 
-@interface ImportContactsCredentialsInputViewController : UIViewController <UITextFieldDelegate>
+@interface ImportContactsCredentialsInputViewController : UIViewController <UITextFieldDelegate, UIAlertViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
+- (IBAction)importContacts:(id)sender;
+- (IBAction)skipImportingContacts:(id)sender;
+
 @end

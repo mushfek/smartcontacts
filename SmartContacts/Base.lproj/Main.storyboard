@@ -74,7 +74,7 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lf6-86-uCc">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="Lf6-86-uCc">
                                 <rect key="frame" x="0.0" y="0.0" width="345" height="504"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
@@ -96,7 +96,7 @@
                                                 <rect key="frame" x="77" y="57" width="231" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="9CF-IZ-pTL" id="dJp-ei-ZCc"/>
                                                     <outlet property="nextField" destination="JLR-eg-KQN" id="ULa-vT-LsL"/>
@@ -129,7 +129,7 @@
                                                 <rect key="frame" x="77" y="127" width="231" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="9CF-IZ-pTL" id="vf4-ap-QbF"/>
                                                     <outlet property="nextField" destination="uXv-fu-0BQ" id="r6p-ov-yDQ"/>
@@ -145,20 +145,29 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Import Contacts" id="eKK-n7-9ex">
-                        <barButtonItem key="leftBarButtonItem" title="Skip" id="Gjy-f3-Hvx"/>
-                        <barButtonItem key="rightBarButtonItem" title="Import" id="mt9-Jl-IPt"/>
+                        <barButtonItem key="leftBarButtonItem" title="Skip" id="Gjy-f3-Hvx">
+                            <connections>
+                                <action selector="skipImportingContacts:" destination="9CF-IZ-pTL" id="rtC-Cm-XsR"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Import" id="mt9-Jl-IPt">
+                            <connections>
+                                <action selector="importContacts:" destination="9CF-IZ-pTL" id="gYE-CB-gJw"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <segue destination="FK4-KB-7qe" kind="push" id="KBZ-XJ-fnd"/>
-                        <segue destination="pGg-6v-bdr" kind="push" id="uBp-HO-37Z"/>
+                        <outlet property="scrollView" destination="Lf6-86-uCc" id="AiE-zT-XYf"/>
+                        <segue destination="FK4-KB-7qe" kind="push" identifier="importContacts" id="KBZ-XJ-fnd"/>
+                        <segue destination="pGg-6v-bdr" kind="push" identifier="skipToContactList" id="uBp-HO-37Z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mUY-MH-yuO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="463" y="46"/>
         </scene>
-        <!--Import Contacts View Controller-->
+        <!--Import Contacts View Controller - Importing Contacts-->
         <scene sceneID="kNz-th-e55">
             <objects>
                 <viewController id="FK4-KB-7qe" customClass="ImportContactsViewController" sceneMemberID="viewController">
@@ -171,10 +180,10 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qvg-5N-w7Q">
-                                <rect key="frame" x="0.0" y="67" width="320" height="60"/>
+                                <rect key="frame" x="0.0" y="6" width="320" height="83"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Importing Facbook Contacts..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zbt-iQ-qq1">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Importing Phone Contacts..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zbt-iQ-qq1">
                                         <rect key="frame" x="36" y="0.0" width="279" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -184,40 +193,44 @@
                                         <rect key="frame" x="5" y="2" width="20" height="20"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Importing Google Contacts..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CiR-Yj-ZF1">
+                                    <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Importing Facebook Contacts..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CiR-Yj-ZF1">
                                         <rect key="frame" x="36" y="30" width="274" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gci-0f-mQn">
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gci-0f-mQn">
                                         <rect key="frame" x="5" y="32" width="20" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Importing Google Contacts..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gld-jc-tFE">
+                                        <rect key="frame" x="36" y="59" width="274" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Qa-mW-HxB">
+                                        <rect key="frame" x="5" y="61" width="20" height="20"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Moz-Ok-4dl">
-                                <rect key="frame" x="12" y="430" width="38" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Abort">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w6W-il-9TT">
-                                <rect key="frame" x="246" y="430" width="62" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Continue">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="pGg-6v-bdr" kind="push" id="e3M-6a-zYa"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="SWJ-k2-chA"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Importing Contacts" id="SWJ-k2-chA">
+                        <barButtonItem key="leftBarButtonItem" title="Abort" id="inJ-UW-u2G"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="importingContactsLabel1" destination="Zbt-iQ-qq1" id="eXR-3S-pYw"/>
+                        <outlet property="importingContactsLabel2" destination="CiR-Yj-ZF1" id="fSW-Wk-cUk"/>
+                        <outlet property="importingContactsLabel3" destination="Gld-jc-tFE" id="bng-5r-jdU"/>
+                        <outlet property="loadingImage1" destination="8Om-tu-aSy" id="wS8-hq-hs9"/>
+                        <outlet property="loadingImage2" destination="gci-0f-mQn" id="Cvo-qM-9do"/>
+                        <outlet property="loadingImage3" destination="3Qa-mW-HxB" id="YHD-Do-re4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IlM-DY-DyN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
