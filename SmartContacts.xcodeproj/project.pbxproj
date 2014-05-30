@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D3A9626454F3A82AC21EFD9E /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = D3A96A3BF47F76EA3ED4A00E /* Podfile */; };
 		D3A966F3CF79D877DC202BE2 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = D3A96D9F8E4E00E15A35A265 /* .gitignore */; };
+		D3A96775542AB41EE107E04F /* CustomUITextField.m in Sources */ = {isa = PBXBuildFile; fileRef = D3A962267730B83A50443E99 /* CustomUITextField.m */; };
 		D3A969ECC87FF30659BF31AC /* ImportContactsCredentialsInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3A9628C0CA4B76E99304FF4 /* ImportContactsCredentialsInputViewController.m */; };
 		D3A96ED8D05D866380E6386B /* ImportContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3A9671E6BC0C9ADF87BF791 /* ImportContactsViewController.m */; };
 		E1834606BC144511873280EA /* libPods-SmartContacts.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0065458B25A74EE694F03553 /* libPods-SmartContacts.a */; };
@@ -50,8 +51,10 @@
 		0065458B25A74EE694F03553 /* libPods-SmartContacts.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SmartContacts.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C37ECF0A88EF414C98E05F11 /* Pods-SmartContacts.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartContacts.xcconfig"; path = "Pods/Pods-SmartContacts.xcconfig"; sourceTree = "<group>"; };
 		D3A9607A0911B73A060D1E73 /* ImportContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImportContactsViewController.h; sourceTree = "<group>"; };
+		D3A962267730B83A50443E99 /* CustomUITextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomUITextField.m; sourceTree = "<group>"; };
 		D3A9628C0CA4B76E99304FF4 /* ImportContactsCredentialsInputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImportContactsCredentialsInputViewController.m; sourceTree = "<group>"; };
 		D3A9671E6BC0C9ADF87BF791 /* ImportContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImportContactsViewController.m; sourceTree = "<group>"; };
+		D3A969961C9D5DA56F7CAC11 /* CustomUITextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomUITextField.h; sourceTree = "<group>"; };
 		D3A96A3BF47F76EA3ED4A00E /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		D3A96B844EE3F64D75427095 /* ImportContactsCredentialsInputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImportContactsCredentialsInputViewController.h; sourceTree = "<group>"; };
 		D3A96D9F8E4E00E15A35A265 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = file.gitignore; path = .gitignore; sourceTree = "<group>"; };
@@ -115,6 +118,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D3A960162BC201031ECAB3FF /* widget */ = {
+			isa = PBXGroup;
+			children = (
+				D3A969961C9D5DA56F7CAC11 /* CustomUITextField.h */,
+				D3A962267730B83A50443E99 /* CustomUITextField.m */,
+			);
+			path = widget;
+			sourceTree = "<group>";
+		};
 		E88CDD4019383CDD00A30DB7 = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +137,7 @@
 				D3A96A3BF47F76EA3ED4A00E /* Podfile */,
 				D3A96D9F8E4E00E15A35A265 /* .gitignore */,
 				C37ECF0A88EF414C98E05F11 /* Pods-SmartContacts.xcconfig */,
+				D3A960162BC201031ECAB3FF /* widget */,
 			);
 			sourceTree = "<group>";
 		};
@@ -350,6 +363,7 @@
 				E88CDD5B19383CDD00A30DB7 /* main.m in Sources */,
 				D3A969ECC87FF30659BF31AC /* ImportContactsCredentialsInputViewController.m in Sources */,
 				D3A96ED8D05D866380E6386B /* ImportContactsViewController.m in Sources */,
+				D3A96775542AB41EE107E04F /* CustomUITextField.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

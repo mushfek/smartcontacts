@@ -6,5 +6,5 @@
 #import <Foundation/Foundation.h>
 
 
-@interface ImportContactsCredentialsInputViewController : UIViewController
+@interface ImportContactsCredentialsInputViewController : UIViewController <UITextFieldDelegate>
 @end

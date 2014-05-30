@@ -4,9 +4,13 @@
 //
 
 #import "ImportContactsCredentialsInputViewController.h"
+#import "CustomUITextField.h"
 
 
-@implementation ImportContactsCredentialsInputViewController {
+@implementation ImportContactsCredentialsInputViewController
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    return [(CustomUITextField *) textField shouldReturn];
 }
+
 @end
