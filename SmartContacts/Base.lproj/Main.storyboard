@@ -158,6 +158,10 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="facebookEmailInput" destination="MyA-vi-SY6" id="inJ-cL-QTz"/>
+                        <outlet property="facebookPasswordInput" destination="JLR-eg-KQN" id="oPe-AA-0oU"/>
+                        <outlet property="googlePlusEmailInput" destination="YsK-zg-ht3" id="1gr-OW-kYW"/>
+                        <outlet property="googlePlusPasswordInput" destination="uXv-fu-0BQ" id="ObH-ib-hdh"/>
                         <outlet property="scrollView" destination="Lf6-86-uCc" id="AiE-zT-XYf"/>
                         <segue destination="FK4-KB-7qe" kind="push" identifier="importContacts" id="KBZ-XJ-fnd"/>
                         <segue destination="pGg-6v-bdr" kind="push" identifier="skipToContactList" id="uBp-HO-37Z"/>
@@ -320,6 +324,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="yN5-98-f6d"/>
+        <segue reference="uBp-HO-37Z"/>
     </inferredMetricsTieBreakers>
 </document>

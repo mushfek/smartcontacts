@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D384133B23D82C7EE41971AE /* FacebookContactsService.m in Sources */ = {isa = PBXBuildFile; fileRef = D3841BB6EDF6EBAE4615497D /* FacebookContactsService.m */; };
+		D3841C4E2EAF8ECB2D18CD98 /* NSObject+NSObjectExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = D3841F68BF78FF772E1DEBD8 /* NSObject+NSObjectExtension.m */; };
+		D3841D2D60AB295218552881 /* NSString+NSStringExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = D384195F32819DB5F7FC691D /* NSString+NSStringExtension.m */; };
+		D3841E4A705891FDFFC0C406 /* GoogleContactsService.m in Sources */ = {isa = PBXBuildFile; fileRef = D38417E2EECACD4750A63D7F /* GoogleContactsService.m */; };
 		D3A9626454F3A82AC21EFD9E /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = D3A96A3BF47F76EA3ED4A00E /* Podfile */; };
 		D3A966F3CF79D877DC202BE2 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = D3A96D9F8E4E00E15A35A265 /* .gitignore */; };
 		D3A96775542AB41EE107E04F /* CustomUITextField.m in Sources */ = {isa = PBXBuildFile; fileRef = D3A962267730B83A50443E99 /* CustomUITextField.m */; };
@@ -50,6 +54,15 @@
 /* Begin PBXFileReference section */
 		0065458B25A74EE694F03553 /* libPods-SmartContacts.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SmartContacts.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C37ECF0A88EF414C98E05F11 /* Pods-SmartContacts.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartContacts.xcconfig"; path = "Pods/Pods-SmartContacts.xcconfig"; sourceTree = "<group>"; };
+		D38412F39E7485F60AB5F0AE /* ObjectionExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectionExtension.h; sourceTree = "<group>"; };
+		D38416179AB4DC3F8B866ABF /* NSObject+NSObjectExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+NSObjectExtension.h"; sourceTree = "<group>"; };
+		D384173943C09A46B121D87B /* GoogleContactsService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleContactsService.h; sourceTree = "<group>"; };
+		D38417E2EECACD4750A63D7F /* GoogleContactsService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleContactsService.m; sourceTree = "<group>"; };
+		D38418D02D464FDBB183C861 /* FacebookContactsService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookContactsService.h; sourceTree = "<group>"; };
+		D384195F32819DB5F7FC691D /* NSString+NSStringExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+NSStringExtension.m"; sourceTree = "<group>"; };
+		D3841BB6EDF6EBAE4615497D /* FacebookContactsService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookContactsService.m; sourceTree = "<group>"; };
+		D3841D8670C1F81953052D34 /* NSString+NSStringExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+NSStringExtension.h"; sourceTree = "<group>"; };
+		D3841F68BF78FF772E1DEBD8 /* NSObject+NSObjectExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+NSObjectExtension.m"; sourceTree = "<group>"; };
 		D3A9607A0911B73A060D1E73 /* ImportContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImportContactsViewController.h; sourceTree = "<group>"; };
 		D3A962267730B83A50443E99 /* CustomUITextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomUITextField.m; sourceTree = "<group>"; };
 		D3A9628C0CA4B76E99304FF4 /* ImportContactsCredentialsInputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImportContactsCredentialsInputViewController.m; sourceTree = "<group>"; };
@@ -118,6 +131,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D38413CAF14EAE87A3E83610 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				D38412F39E7485F60AB5F0AE /* ObjectionExtension.h */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+		D38418772C962478B7190756 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				D38417E2EECACD4750A63D7F /* GoogleContactsService.m */,
+				D384173943C09A46B121D87B /* GoogleContactsService.h */,
+				D3841BB6EDF6EBAE4615497D /* FacebookContactsService.m */,
+				D38418D02D464FDBB183C861 /* FacebookContactsService.h */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		D3841921BBB9690B3D540387 /* category */ = {
+			isa = PBXGroup;
+			children = (
+				D38416179AB4DC3F8B866ABF /* NSObject+NSObjectExtension.h */,
+				D3841F68BF78FF772E1DEBD8 /* NSObject+NSObjectExtension.m */,
+				D3841D8670C1F81953052D34 /* NSString+NSStringExtension.h */,
+				D384195F32819DB5F7FC691D /* NSString+NSStringExtension.m */,
+			);
+			path = category;
+			sourceTree = "<group>";
+		};
 		D3A960162BC201031ECAB3FF /* widget */ = {
 			isa = PBXGroup;
 			children = (
@@ -184,6 +227,9 @@
 				D3A96B844EE3F64D75427095 /* ImportContactsCredentialsInputViewController.h */,
 				D3A9671E6BC0C9ADF87BF791 /* ImportContactsViewController.m */,
 				D3A9607A0911B73A060D1E73 /* ImportContactsViewController.h */,
+				D38418772C962478B7190756 /* Service */,
+				D38413CAF14EAE87A3E83610 /* utils */,
+				D3841921BBB9690B3D540387 /* category */,
 			);
 			path = SmartContacts;
 			sourceTree = "<group>";
@@ -364,6 +410,10 @@
 				D3A969ECC87FF30659BF31AC /* ImportContactsCredentialsInputViewController.m in Sources */,
 				D3A96ED8D05D866380E6386B /* ImportContactsViewController.m in Sources */,
 				D3A96775542AB41EE107E04F /* CustomUITextField.m in Sources */,
+				D3841E4A705891FDFFC0C406 /* GoogleContactsService.m in Sources */,
+				D3841C4E2EAF8ECB2D18CD98 /* NSObject+NSObjectExtension.m in Sources */,
+				D3841D2D60AB295218552881 /* NSString+NSStringExtension.m in Sources */,
+				D384133B23D82C7EE41971AE /* FacebookContactsService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,6 +544,7 @@
 				GCC_PREFIX_HEADER = "SmartContacts/SmartContacts-Prefix.pch";
 				INFOPLIST_FILE = "SmartContacts/SmartContacts-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -509,6 +560,7 @@
 				GCC_PREFIX_HEADER = "SmartContacts/SmartContacts-Prefix.pch";
 				INFOPLIST_FILE = "SmartContacts/SmartContacts-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/Pods\"/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
