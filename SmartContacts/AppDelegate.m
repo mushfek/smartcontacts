@@ -22,7 +22,7 @@
     // Override point for customization after application launch.
     UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
     ContactListViewController *controller = (ContactListViewController *)navigationController.topViewController;
-    controller.managedObjectContext = self.managedObjectContext;
+//    controller.managedObjectContext = self.managedObjectContext;
     return YES;
 }
 

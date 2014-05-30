@@ -6,5 +6,5 @@
 #import <Foundation/Foundation.h>
 
 
-@interface ImportContactsViewController : UIViewController 
+@interface ImportContactsViewController : UIViewController
 @end
