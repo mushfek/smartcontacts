@@ -1,0 +1,500 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E88CDD4D19383CDD00A30DB7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E88CDD4C19383CDD00A30DB7 /* Foundation.framework */; };
+		E88CDD4F19383CDD00A30DB7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E88CDD4E19383CDD00A30DB7 /* CoreGraphics.framework */; };
+		E88CDD5119383CDD00A30DB7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E88CDD5019383CDD00A30DB7 /* UIKit.framework */; };
+		E88CDD5319383CDD00A30DB7 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E88CDD5219383CDD00A30DB7 /* CoreData.framework */; };
+		E88CDD5919383CDD00A30DB7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E88CDD5719383CDD00A30DB7 /* InfoPlist.strings */; };
+		E88CDD5B19383CDD00A30DB7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E88CDD5A19383CDD00A30DB7 /* main.m */; };
+		E88CDD5F19383CDD00A30DB7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E88CDD5E19383CDD00A30DB7 /* AppDelegate.m */; };
+		E88CDD6219383CDD00A30DB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E88CDD6019383CDD00A30DB7 /* Main.storyboard */; };
+		E88CDD6519383CDD00A30DB7 /* SmartContacts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E88CDD6319383CDD00A30DB7 /* SmartContacts.xcdatamodeld */; };
+		E88CDD6819383CDD00A30DB7 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E88CDD6719383CDD00A30DB7 /* MasterViewController.m */; };
+		E88CDD6B19383CDD00A30DB7 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E88CDD6A19383CDD00A30DB7 /* DetailViewController.m */; };
+		E88CDD6D19383CDD00A30DB7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E88CDD6C19383CDD00A30DB7 /* Images.xcassets */; };
+		E88CDD7419383CDE00A30DB7 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E88CDD7319383CDE00A30DB7 /* XCTest.framework */; };
+		E88CDD7519383CDE00A30DB7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E88CDD4C19383CDD00A30DB7 /* Foundation.framework */; };
+		E88CDD7619383CDE00A30DB7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E88CDD5019383CDD00A30DB7 /* UIKit.framework */; };
+		E88CDD7719383CDE00A30DB7 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E88CDD5219383CDD00A30DB7 /* CoreData.framework */; };
+		E88CDD7F19383CDE00A30DB7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E88CDD7D19383CDE00A30DB7 /* InfoPlist.strings */; };
+		E88CDD8119383CDE00A30DB7 /* SmartContactsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E88CDD8019383CDE00A30DB7 /* SmartContactsTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E88CDD7819383CDE00A30DB7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E88CDD4119383CDD00A30DB7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E88CDD4819383CDD00A30DB7;
+			remoteInfo = SmartContacts;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		E88CDD4919383CDD00A30DB7 /* SmartContacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartContacts.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E88CDD4C19383CDD00A30DB7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E88CDD4E19383CDD00A30DB7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		E88CDD5019383CDD00A30DB7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		E88CDD5219383CDD00A30DB7 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		E88CDD5619383CDD00A30DB7 /* SmartContacts-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SmartContacts-Info.plist"; sourceTree = "<group>"; };
+		E88CDD5819383CDD00A30DB7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E88CDD5A19383CDD00A30DB7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E88CDD5C19383CDD00A30DB7 /* SmartContacts-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SmartContacts-Prefix.pch"; sourceTree = "<group>"; };
+		E88CDD5D19383CDD00A30DB7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		E88CDD5E19383CDD00A30DB7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		E88CDD6119383CDD00A30DB7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E88CDD6419383CDD00A30DB7 /* SmartContacts.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SmartContacts.xcdatamodel; sourceTree = "<group>"; };
+		E88CDD6619383CDD00A30DB7 /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
+		E88CDD6719383CDD00A30DB7 /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
+		E88CDD6919383CDD00A30DB7 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		E88CDD6A19383CDD00A30DB7 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		E88CDD6C19383CDD00A30DB7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		E88CDD7219383CDE00A30DB7 /* SmartContactsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartContactsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E88CDD7319383CDE00A30DB7 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		E88CDD7C19383CDE00A30DB7 /* SmartContactsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SmartContactsTests-Info.plist"; sourceTree = "<group>"; };
+		E88CDD7E19383CDE00A30DB7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E88CDD8019383CDE00A30DB7 /* SmartContactsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SmartContactsTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E88CDD4619383CDD00A30DB7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E88CDD4F19383CDD00A30DB7 /* CoreGraphics.framework in Frameworks */,
+				E88CDD5319383CDD00A30DB7 /* CoreData.framework in Frameworks */,
+				E88CDD5119383CDD00A30DB7 /* UIKit.framework in Frameworks */,
+				E88CDD4D19383CDD00A30DB7 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E88CDD6F19383CDE00A30DB7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E88CDD7419383CDE00A30DB7 /* XCTest.framework in Frameworks */,
+				E88CDD7719383CDE00A30DB7 /* CoreData.framework in Frameworks */,
+				E88CDD7619383CDE00A30DB7 /* UIKit.framework in Frameworks */,
+				E88CDD7519383CDE00A30DB7 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E88CDD4019383CDD00A30DB7 = {
+			isa = PBXGroup;
+			children = (
+				E88CDD5419383CDD00A30DB7 /* SmartContacts */,
+				E88CDD7A19383CDE00A30DB7 /* SmartContactsTests */,
+				E88CDD4B19383CDD00A30DB7 /* Frameworks */,
+				E88CDD4A19383CDD00A30DB7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E88CDD4A19383CDD00A30DB7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E88CDD4919383CDD00A30DB7 /* SmartContacts.app */,
+				E88CDD7219383CDE00A30DB7 /* SmartContactsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E88CDD4B19383CDD00A30DB7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E88CDD4C19383CDD00A30DB7 /* Foundation.framework */,
+				E88CDD4E19383CDD00A30DB7 /* CoreGraphics.framework */,
+				E88CDD5019383CDD00A30DB7 /* UIKit.framework */,
+				E88CDD5219383CDD00A30DB7 /* CoreData.framework */,
+				E88CDD7319383CDE00A30DB7 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E88CDD5419383CDD00A30DB7 /* SmartContacts */ = {
+			isa = PBXGroup;
+			children = (
+				E88CDD5D19383CDD00A30DB7 /* AppDelegate.h */,
+				E88CDD5E19383CDD00A30DB7 /* AppDelegate.m */,
+				E88CDD6019383CDD00A30DB7 /* Main.storyboard */,
+				E88CDD6619383CDD00A30DB7 /* MasterViewController.h */,
+				E88CDD6719383CDD00A30DB7 /* MasterViewController.m */,
+				E88CDD6919383CDD00A30DB7 /* DetailViewController.h */,
+				E88CDD6A19383CDD00A30DB7 /* DetailViewController.m */,
+				E88CDD6C19383CDD00A30DB7 /* Images.xcassets */,
+				E88CDD6319383CDD00A30DB7 /* SmartContacts.xcdatamodeld */,
+				E88CDD5519383CDD00A30DB7 /* Supporting Files */,
+			);
+			path = SmartContacts;
+			sourceTree = "<group>";
+		};
+		E88CDD5519383CDD00A30DB7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E88CDD5619383CDD00A30DB7 /* SmartContacts-Info.plist */,
+				E88CDD5719383CDD00A30DB7 /* InfoPlist.strings */,
+				E88CDD5A19383CDD00A30DB7 /* main.m */,
+				E88CDD5C19383CDD00A30DB7 /* SmartContacts-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E88CDD7A19383CDE00A30DB7 /* SmartContactsTests */ = {
+			isa = PBXGroup;
+			children = (
+				E88CDD8019383CDE00A30DB7 /* SmartContactsTests.m */,
+				E88CDD7B19383CDE00A30DB7 /* Supporting Files */,
+			);
+			path = SmartContactsTests;
+			sourceTree = "<group>";
+		};
+		E88CDD7B19383CDE00A30DB7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E88CDD7C19383CDE00A30DB7 /* SmartContactsTests-Info.plist */,
+				E88CDD7D19383CDE00A30DB7 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E88CDD4819383CDD00A30DB7 /* SmartContacts */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E88CDD8419383CDE00A30DB7 /* Build configuration list for PBXNativeTarget "SmartContacts" */;
+			buildPhases = (
+				E88CDD4519383CDD00A30DB7 /* Sources */,
+				E88CDD4619383CDD00A30DB7 /* Frameworks */,
+				E88CDD4719383CDD00A30DB7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SmartContacts;
+			productName = SmartContacts;
+			productReference = E88CDD4919383CDD00A30DB7 /* SmartContacts.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E88CDD7119383CDE00A30DB7 /* SmartContactsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E88CDD8719383CDE00A30DB7 /* Build configuration list for PBXNativeTarget "SmartContactsTests" */;
+			buildPhases = (
+				E88CDD6E19383CDE00A30DB7 /* Sources */,
+				E88CDD6F19383CDE00A30DB7 /* Frameworks */,
+				E88CDD7019383CDE00A30DB7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E88CDD7919383CDE00A30DB7 /* PBXTargetDependency */,
+			);
+			name = SmartContactsTests;
+			productName = SmartContactsTests;
+			productReference = E88CDD7219383CDE00A30DB7 /* SmartContactsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E88CDD4119383CDD00A30DB7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Therap (BD) Ltd.";
+				TargetAttributes = {
+					E88CDD7119383CDE00A30DB7 = {
+						TestTargetID = E88CDD4819383CDD00A30DB7;
+					};
+				};
+			};
+			buildConfigurationList = E88CDD4419383CDD00A30DB7 /* Build configuration list for PBXProject "SmartContacts" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E88CDD4019383CDD00A30DB7;
+			productRefGroup = E88CDD4A19383CDD00A30DB7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E88CDD4819383CDD00A30DB7 /* SmartContacts */,
+				E88CDD7119383CDE00A30DB7 /* SmartContactsTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E88CDD4719383CDD00A30DB7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E88CDD6D19383CDD00A30DB7 /* Images.xcassets in Resources */,
+				E88CDD5919383CDD00A30DB7 /* InfoPlist.strings in Resources */,
+				E88CDD6219383CDD00A30DB7 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E88CDD7019383CDE00A30DB7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E88CDD7F19383CDE00A30DB7 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E88CDD4519383CDD00A30DB7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E88CDD6B19383CDD00A30DB7 /* DetailViewController.m in Sources */,
+				E88CDD6819383CDD00A30DB7 /* MasterViewController.m in Sources */,
+				E88CDD6519383CDD00A30DB7 /* SmartContacts.xcdatamodeld in Sources */,
+				E88CDD5F19383CDD00A30DB7 /* AppDelegate.m in Sources */,
+				E88CDD5B19383CDD00A30DB7 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E88CDD6E19383CDE00A30DB7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E88CDD8119383CDE00A30DB7 /* SmartContactsTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E88CDD7919383CDE00A30DB7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E88CDD4819383CDD00A30DB7 /* SmartContacts */;
+			targetProxy = E88CDD7819383CDE00A30DB7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E88CDD5719383CDD00A30DB7 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E88CDD5819383CDD00A30DB7 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		E88CDD6019383CDD00A30DB7 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E88CDD6119383CDD00A30DB7 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E88CDD7D19383CDE00A30DB7 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E88CDD7E19383CDE00A30DB7 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E88CDD8219383CDE00A30DB7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		E88CDD8319383CDE00A30DB7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E88CDD8519383CDE00A30DB7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SmartContacts/SmartContacts-Prefix.pch";
+				INFOPLIST_FILE = "SmartContacts/SmartContacts-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		E88CDD8619383CDE00A30DB7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SmartContacts/SmartContacts-Prefix.pch";
+				INFOPLIST_FILE = "SmartContacts/SmartContacts-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		E88CDD8819383CDE00A30DB7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SmartContacts.app/SmartContacts";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SmartContacts/SmartContacts-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "SmartContactsTests/SmartContactsTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		E88CDD8919383CDE00A30DB7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SmartContacts.app/SmartContacts";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SmartContacts/SmartContacts-Prefix.pch";
+				INFOPLIST_FILE = "SmartContactsTests/SmartContactsTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E88CDD4419383CDD00A30DB7 /* Build configuration list for PBXProject "SmartContacts" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E88CDD8219383CDE00A30DB7 /* Debug */,
+				E88CDD8319383CDE00A30DB7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E88CDD8419383CDE00A30DB7 /* Build configuration list for PBXNativeTarget "SmartContacts" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E88CDD8519383CDE00A30DB7 /* Debug */,
+				E88CDD8619383CDE00A30DB7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		E88CDD8719383CDE00A30DB7 /* Build configuration list for PBXNativeTarget "SmartContactsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E88CDD8819383CDE00A30DB7 /* Debug */,
+				E88CDD8919383CDE00A30DB7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E88CDD6319383CDD00A30DB7 /* SmartContacts.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E88CDD6419383CDD00A30DB7 /* SmartContacts.xcdatamodel */,
+			);
+			currentVersion = E88CDD6419383CDD00A30DB7 /* SmartContacts.xcdatamodel */;
+			path = SmartContacts.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = E88CDD4119383CDD00A30DB7 /* Project object */;
+}
