@@ -35,7 +35,6 @@
 		E88CDD5B19383CDD00A30DB7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E88CDD5A19383CDD00A30DB7 /* main.m */; };
 		E88CDD5F19383CDD00A30DB7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E88CDD5E19383CDD00A30DB7 /* AppDelegate.m */; };
 		E88CDD6219383CDD00A30DB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E88CDD6019383CDD00A30DB7 /* Main.storyboard */; };
-		E88CDD6519383CDD00A30DB7 /* SmartContacts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E88CDD6319383CDD00A30DB7 /* SmartContacts.xcdatamodeld */; };
 		E88CDD6819383CDD00A30DB7 /* ContactListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E88CDD6719383CDD00A30DB7 /* ContactListViewController.m */; };
 		E88CDD6B19383CDD00A30DB7 /* ContactDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E88CDD6A19383CDD00A30DB7 /* ContactDetailsViewController.m */; };
 		E88CDD6D19383CDD00A30DB7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E88CDD6C19383CDD00A30DB7 /* Images.xcassets */; };
@@ -112,7 +111,6 @@
 		E88CDD5D19383CDD00A30DB7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E88CDD5E19383CDD00A30DB7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		E88CDD6119383CDD00A30DB7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		E88CDD6419383CDD00A30DB7 /* SmartContacts.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SmartContacts.xcdatamodel; sourceTree = "<group>"; };
 		E88CDD6619383CDD00A30DB7 /* ContactListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactListViewController.h; sourceTree = "<group>"; };
 		E88CDD6719383CDD00A30DB7 /* ContactListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactListViewController.m; sourceTree = "<group>"; };
 		E88CDD6919383CDD00A30DB7 /* ContactDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactDetailsViewController.h; sourceTree = "<group>"; };
@@ -285,7 +283,6 @@
 				E88CDD6919383CDD00A30DB7 /* ContactDetailsViewController.h */,
 				E88CDD6A19383CDD00A30DB7 /* ContactDetailsViewController.m */,
 				E88CDD6C19383CDD00A30DB7 /* Images.xcassets */,
-				E88CDD6319383CDD00A30DB7 /* SmartContacts.xcdatamodeld */,
 				E88CDD5519383CDD00A30DB7 /* Supporting Files */,
 				D3A9628C0CA4B76E99304FF4 /* ImportContactsCredentialsInputViewController.m */,
 				D3A96B844EE3F64D75427095 /* ImportContactsCredentialsInputViewController.h */,
@@ -395,8 +392,6 @@
 			mainGroup = E88CDD4019383CDD00A30DB7;
 			productRefGroup = E88CDD4A19383CDD00A30DB7 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-			);
 			projectRoot = "";
 			targets = (
 				E88CDD4819383CDD00A30DB7 /* SmartContacts */,
@@ -468,7 +463,6 @@
 			files = (
 				E88CDD6B19383CDD00A30DB7 /* ContactDetailsViewController.m in Sources */,
 				E88CDD6819383CDD00A30DB7 /* ContactListViewController.m in Sources */,
-				E88CDD6519383CDD00A30DB7 /* SmartContacts.xcdatamodeld in Sources */,
 				E88CDD5F19383CDD00A30DB7 /* AppDelegate.m in Sources */,
 				E88CDD5B19383CDD00A30DB7 /* main.m in Sources */,
 				D3A969ECC87FF30659BF31AC /* ImportContactsCredentialsInputViewController.m in Sources */,
@@ -698,6 +692,7 @@
 				E88CDD8619383CDE00A30DB7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E88CDD8719383CDE00A30DB7 /* Build configuration list for PBXNativeTarget "SmartContactsTests" */ = {
 			isa = XCConfigurationList;
@@ -706,6 +701,7 @@
 				E88CDD8919383CDE00A30DB7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
@@ -716,16 +712,6 @@
 				36EBC2DC8405012503383885 /* SmartContacts.xcdatamodel */,
 			);
 			currentVersion = 36EBC2DC8405012503383885 /* SmartContacts.xcdatamodel */;
-			path = SmartContacts.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-		E88CDD6319383CDD00A30DB7 /* SmartContacts.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				E88CDD6419383CDD00A30DB7 /* SmartContacts.xcdatamodel */,
-			);
-			currentVersion = E88CDD6419383CDD00A30DB7 /* SmartContacts.xcdatamodel */;
 			path = SmartContacts.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

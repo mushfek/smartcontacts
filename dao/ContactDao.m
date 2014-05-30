@@ -48,7 +48,7 @@ objection_register_singleton(ContactDao)
     [newContact setValue:[NSNumber numberWithUnsignedInteger:contact.contactId] forKey:@"contactId"];
     [newContact setValue:contact.firstName forKey:@"firstName"];
     [newContact setValue:contact.lastName forKey:@"lastName"];
-    [newContact setValue:contact.photo forKey:nil];
+    [newContact setValue:contact.photo forKey:@"photo"];
     [newContact setValue:contact.notes forKey:@"notes"];
 
     [newContact setValue:contact.phones forKey:@"phones"];
