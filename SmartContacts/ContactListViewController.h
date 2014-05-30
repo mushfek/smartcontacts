@@ -1,5 +1,5 @@
 //
-//  MasterViewController.h
+//  ContactListViewController.h
 //  SmartContacts
 //
 //  Created by Sharafat Ibn Mollah Mosharraf on 5/30/14.
@@ -10,7 +10,7 @@
 
 #import <CoreData/CoreData.h>
 
-@interface MasterViewController : UITableViewController <NSFetchedResultsControllerDelegate>
+@interface ContactListViewController : UITableViewController <NSFetchedResultsControllerDelegate>
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;

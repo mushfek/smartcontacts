@@ -1,5 +1,5 @@
 //
-//  DetailViewController.h
+//  ContactDetailsViewController.h
 //  SmartContacts
 //
 //  Created by Sharafat Ibn Mollah Mosharraf on 5/30/14.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DetailViewController : UIViewController
+@interface ContactDetailsViewController : UIViewController
 
 @property (strong, nonatomic) id detailItem;
 

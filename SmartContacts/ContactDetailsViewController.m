@@ -1,18 +1,18 @@
 //
-//  DetailViewController.m
+//  ContactDetailsViewController.m
 //  SmartContacts
 //
 //  Created by Sharafat Ibn Mollah Mosharraf on 5/30/14.
 //  Copyright (c) 2014 Therap (BD) Ltd. All rights reserved.
 //
 
-#import "DetailViewController.h"
+#import "ContactDetailsViewController.h"
 
-@interface DetailViewController ()
+@interface ContactDetailsViewController ()
 - (void)configureView;
 @end
 
-@implementation DetailViewController
+@implementation ContactDetailsViewController
 
 #pragma mark - Managing the detail item
 
@@ -20,7 +20,7 @@
 {
     if (_detailItem != newDetailItem) {
         _detailItem = newDetailItem;
-        
+
         // Update the view.
         [self configureView];
     }
