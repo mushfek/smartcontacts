@@ -1,0 +1,5 @@
+.*
+!.gitignore
+xcuserdata
+*.lock
+Pods/*
