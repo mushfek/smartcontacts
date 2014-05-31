@@ -10,6 +10,7 @@
 #import "ContactDao.h"
 #import "Contact.h"
 #import "NSObject+NSObjectExtension.h"
+#import "AddressBookContactsService.h"
 
 #define Semaphore int
 
@@ -19,6 +20,7 @@
     BOOL shouldImportFacebookFriends;
     GoogleContactsService *_googleContactsService;
     FacebookContactsService *_facebookContactsService;
+    AddressBookContactsService *_addressBookContactsService;
     ContactDao *_contactDao;
     Semaphore noOfTasksWaitingToBeCompleted;
     BOOL anyErrorOccurredWhileImporting;
@@ -29,10 +31,12 @@
 
     _googleContactsService = objection_inject(GoogleContactsService)
     _facebookContactsService = objection_inject(FacebookContactsService)
+    _addressBookContactsService = objection_inject(AddressBookContactsService)
+
     _contactDao = objection_inject(ContactDao)
 }
 
-- (void)        setGooglePlusEmailId:(NSString *)email andPassword:(NSString *)password
+- (void)setGooglePlusEmailId:(NSString *)email andPassword:(NSString *)password
 andIfFacebookFriendsShouldBeImported:(BOOL)importFacebookFriends {
     googlePlusEmailId = email;
     googlePlusPassword = password;
@@ -75,7 +79,12 @@ andIfFacebookFriendsShouldBeImported:(BOOL)importFacebookFriends {
 - (void)importPhoneContacts {
     [self showLoadingIndicator:self.loadingImage1];
 
-    //TODO: Import Phone Contacts and then:
+    NSMutableArray *addressBookContacts = [_addressBookContactsService fetchContactsFromAddressBook];
+    for (int i = 0; i < [addressBookContacts count]; i++) {
+        Contact *newContact = [addressBookContacts objectAtIndex:i];
+        [_contactDao addContact:newContact];
+    }
+
     [self showIndicator:self.statusImage1 forStatus:TRUE andHide:self.loadingImage1];
     self.importingContactsLabel1.text = @"Imported phone contacts.";
 

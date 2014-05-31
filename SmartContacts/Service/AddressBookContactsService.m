@@ -19,10 +19,12 @@
 objection_register_singleton(AddressBookContactsService)
 
 - (NSMutableArray *)fetchContactsFromAddressBook {
+    __block BOOL userDidGrantAddressBookAccess;
     ABAddressBookRef addressBookRef = ABAddressBookCreateWithOptions(NULL, NULL);
-
+    CFErrorRef error = NULL;
     if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusNotDetermined) {
         ABAddressBookRequestAccessWithCompletion(addressBookRef, ^(bool granted, CFErrorRef error) {
+
         });
     } else if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusAuthorized) {
         CFErrorRef *error = NULL;
@@ -41,7 +43,6 @@ objection_register_singleton(AddressBookContactsService)
             [contact setFirstName:firstName];
             [contact setLastName:lastName];
 
-            //emails
             ABMultiValueRef emails = ABRecordCopyValue(singleContact, kABPersonEmailProperty);
             for (int j = 0; j < ABMultiValueGetCount(emails); j++) {
                 NSString *email = (__bridge_transfer NSString *) ABMultiValueCopyValueAtIndex(emails, j);
@@ -61,7 +62,6 @@ objection_register_singleton(AddressBookContactsService)
                 }
             }
 
-            //instant messengers
             ABMultiValueRef instantMessengers = ABRecordCopyValue(singleContact, kABPersonInstantMessageProperty);
             for (int k = 0; k < ABMultiValueGetCount(instantMessengers); k++) {
                 CFDictionaryRef dict = ABMultiValueCopyValueAtIndex(instantMessengers, k);
@@ -74,7 +74,6 @@ objection_register_singleton(AddressBookContactsService)
                 [contact.ims setByAddingObject:im];
             }
 
-            //social
             ABMultiValueRef socials = ABRecordCopyValue(singleContact, kABPersonSocialProfileProperty);
             for (int l = 0; l < ABMultiValueGetCount(socials); l++) {
                 CFDictionaryRef dict = ABMultiValueCopyValueAtIndex(socials, l);
@@ -91,7 +90,6 @@ objection_register_singleton(AddressBookContactsService)
                 [contact.socialProfiles setByAddingObject:socialProfile];
             }
 
-            //phone
             ABMultiValueRef phones = ABRecordCopyValue(singleContact, kABPersonPhoneProperty);
             for (int m = 0; m < ABMultiValueGetCount(phones); m++) {
                 CFStringRef phoneNumberRef = ABMultiValueCopyValueAtIndex(phones, m);
@@ -106,7 +104,6 @@ objection_register_singleton(AddressBookContactsService)
                 [contact.phones setByAddingObject:phone];
             }
 
-            //addresses
             ABMultiValueRef addresses = ABRecordCopyValue(singleContact, kABPersonAddressProperty);
             for (int n = 0; n < ABMultiValueGetCount(addresses); n++) {
                 CFDictionaryRef dict = ABMultiValueCopyValueAtIndex(addresses, n);
@@ -120,6 +117,8 @@ objection_register_singleton(AddressBookContactsService)
 
                 [contact.addresses setByAddingObject:address];
             }
+
+            [contactList addObject:contact];
         }
 
         return contactList;
