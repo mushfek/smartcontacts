@@ -7,6 +7,9 @@
 //
 
 #import "ContactDetailsViewController.h"
+#import "Contact.h"
+#import "NSString+NSStringExtension.h"
+#import "GDataEntryContent.h"
 
 @interface ContactDetailsViewController ()
 - (void)configureView;
@@ -14,38 +17,39 @@
 
 @implementation ContactDetailsViewController
 
-#pragma mark - Managing the detail item
-
-- (void)setDetailItem:(id)newDetailItem
-{
-    if (_detailItem != newDetailItem) {
-        _detailItem = newDetailItem;
-
-        // Update the view.
-        [self configureView];
-    }
+- (void)configureView {
 }
 
-- (void)configureView
-{
-    // Update the user interface for the detail item.
-
-    if (self.detailItem) {
-        self.detailDescriptionLabel.text = [[self.detailItem valueForKey:@"timeStamp"] description];
-    }
-}
-
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    // Do any additional setup after loading the view, typically from a nib.
     [self configureView];
+    [self assignContactInformation];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)assignContactInformation {
+    self.contactPhoto.image = [UIImage imageWithData:self.detailItem.photo];
+
+    NSString *contactFullName;
+    if (self.detailItem.firstName != nil) {
+        contactFullName = self.detailItem.firstName;
+        if (self.detailItem.lastName != nil) {
+            contactFullName = concat(contactFullName, @" ", self.detailItem.lastName);
+        }
+    } else {
+        contactFullName = self.detailItem.lastName;
+    }
+    self.contactName.text = contactFullName;
+
+    self.contactPhone.text = [[self.detailItem.phones anyObject] stringValue];
+    self.contactEmailAddress.text = [[self.detailItem.mails anyObject] stringValue];
+    self.contactAddress.text = [[self.detailItem.addresses anyObject] stringValue];
+    self.contactIms.text = [[self.detailItem.ims anyObject] stringValue];
+    self.contactOrganization.text = [[self.detailItem.organizations anyObject] stringValue];
+    self.contactSocialProfile.text = [[self.detailItem.socialProfiles anyObject] stringValue];
+    self.contactUrl.text = [[self.detailItem.urls anyObject] stringValue];
+}
+- (IBAction)editButtonPressed:(id)sender {
 }
 
 @end
