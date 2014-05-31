@@ -38,13 +38,21 @@
     }
     self.contactName.text = contactFullName;
 
-    self.contactPhone.text = [[self.detailItem.phones anyObject] stringValue];
-    self.contactEmailAddress.text = [[self.detailItem.mails anyObject] stringValue];
-    self.contactAddress.text = [[self.detailItem.addresses anyObject] stringValue];
-    self.contactIms.text = [[self.detailItem.ims anyObject] stringValue];
-    self.contactOrganization.text = [[self.detailItem.organizations anyObject] stringValue];
-    self.contactSocialProfile.text = [[self.detailItem.socialProfiles anyObject] stringValue];
-    self.contactUrl.text = [[self.detailItem.urls anyObject] stringValue];
+//    self.contactPhone.text = [[self.detailItem.phones anyObject] stringValue];
+//    self.contactEmailAddress.text = [[self.detailItem.mails anyObject] stringValue];
+//    self.contactAddress.text = [[self.detailItem.addresses anyObject] stringValue];
+//    self.contactIms.text = [[self.detailItem.ims anyObject] stringValue];
+//    self.contactOrganization.text = [[self.detailItem.organizations anyObject] stringValue];
+//    self.contactSocialProfile.text = [[self.detailItem.socialProfiles anyObject] stringValue];
+//    self.contactUrl.text = [[self.detailItem.urls anyObject] stringValue];
+
+    self.contactPhone.text = self.detailItem.phone;
+    self.contactEmailAddress.text = self.detailItem.mail;
+    self.contactAddress.text = self.detailItem.address;
+    self.contactIms.text = self.detailItem.im;
+    self.contactOrganization.text = self.detailItem.organization;
+    self.contactSocialProfile.text = self.detailItem.socialProfile ;
+    self.contactUrl.text = self.detailItem.url;
 }
 
 @end

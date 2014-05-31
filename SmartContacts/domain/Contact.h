@@ -16,12 +16,20 @@
 @property (nonatomic, retain) NSData *photo;
 @property (nonatomic, copy) NSString *notes;
 
-@property (nonatomic, copy) NSSet *phones;
-@property (nonatomic, copy) NSSet *addresses;
-@property (nonatomic, copy) NSSet *organizations;
-@property (nonatomic, copy) NSSet *mails;
-@property (nonatomic, copy) NSSet *ims;
-@property (nonatomic, copy) NSSet *socialProfiles;
-@property (nonatomic, copy) NSSet *urls;
+@property (nonatomic, copy) NSString *phone;
+@property (nonatomic, copy) NSString *address;
+@property (nonatomic, copy) NSString *organization;
+@property (nonatomic, copy) NSString *mail;
+@property (nonatomic, copy) NSString *im;
+@property (nonatomic, copy) NSString *socialProfile;
+@property (nonatomic, copy) NSString *url;
+
+@property (nonatomic, copy) NSMutableSet *phones;
+@property (nonatomic, copy) NSMutableSet *addresses;
+@property (nonatomic, copy) NSMutableSet *organizations;
+@property (nonatomic, copy) NSMutableSet *mails;
+@property (nonatomic, copy) NSMutableSet *ims;
+@property (nonatomic, copy) NSMutableSet *socialProfiles;
+@property (nonatomic, copy) NSMutableSet *urls;
 
 @end

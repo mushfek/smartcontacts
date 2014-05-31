@@ -125,6 +125,8 @@ NSArray *searchResult;
                 cell.contactSubtitleLabel.text = @"";
             }
         }
+    } else if (contact.phone != nil) {
+        cell.contactSubtitleLabel.text = contact.phone;
     } else {
         cell.contactSubtitleLabel.text = @"";
     }
@@ -145,17 +147,18 @@ NSArray *searchResult;
         } else {
             contact = [contacts objectAtIndex:(NSUInteger) indexPath.row];
         }
-        if ([contact.phones count] > 0) {   //Send SMS if mobile number exists
-            Phone *phone = (Phone *) [contact.phones anyObject];
-
+//        if ([contact.phones count] > 0) {   //Send SMS if mobile number exists
+//            Phone *phone = (Phone *) [contact.phones anyObject];
+        if (contact.phone != nil) {
             MFMessageComposeViewController *smsComposeViewController = [[MFMessageComposeViewController alloc] init];
-            smsComposeViewController.recipients = @[phone.phoneNumber];
+            smsComposeViewController.recipients = @[contact.phone];
             smsComposeViewController.messageComposeDelegate = self;
 
             [self presentViewController:smsComposeViewController animated:YES completion:nil];
-        } else if ([contact.urls count] > 0) {    //start browsing if website exists
-            Url *url = (Url *) [contact.urls anyObject];
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url.url]];
+//        } else if ([contact.urls count] > 0) {    //start browsing if website exists
+//            Url *url = (Url *) [contact.urls anyObject];
+        } else if (contact.url != nil) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:contact.url]];
         } else {
             NSLog(@"Couldn't perform any action on left swipe.");
         }
@@ -173,14 +176,15 @@ NSArray *searchResult;
             contact = [contacts objectAtIndex:(NSUInteger) indexPath.row];
         }
 
-        if ([contact.phones count] > 0) {   //Call if mobile number exists
-            Phone *phone = (Phone *) [contact.phones anyObject];
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:concat(@"telprompt://", phone.phoneNumber)]];
-        } else if ([contact.mails count] > 0) {    //start mailing if email exists
-            Mail *email = (Mail *) [contact.mails anyObject];
-
+//        if ([contact.phones count] > 0) {   //Call if mobile number exists
+//            Phone *phone = (Phone *) [contact.phones anyObject];
+        if (contact.phone != nil) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:concat(@"telprompt://", contact.phone)]];
+//        } else if ([contact.mails count] > 0) {    //start mailing if email exists
+//            Mail *email = (Mail *) [contact.mails anyObject];
+        } else if (contact.mail != nil) {
             MFMailComposeViewController *mailComposeViewController = [[MFMailComposeViewController alloc] init];
-            [mailComposeViewController setToRecipients:@[email.mailAddress]];
+            [mailComposeViewController setToRecipients:@[contact.mail]];
             mailComposeViewController.mailComposeDelegate = self;
 
             [self presentViewController:mailComposeViewController animated:YES completion:nil];

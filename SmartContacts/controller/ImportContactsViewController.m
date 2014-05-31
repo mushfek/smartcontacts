@@ -36,7 +36,7 @@
     _contactDao = objection_inject(ContactDao)
 }
 
-- (void)setGooglePlusEmailId:(NSString *)email andPassword:(NSString *)password
+- (void)        setGooglePlusEmailId:(NSString *)email andPassword:(NSString *)password
 andIfFacebookFriendsShouldBeImported:(BOOL)importFacebookFriends {
     googlePlusEmailId = email;
     googlePlusPassword = password;
@@ -51,6 +51,7 @@ andIfFacebookFriendsShouldBeImported:(BOOL)importFacebookFriends {
 - (void)configureView {
     self.navigationItem.hidesBackButton = YES;
 
+    shouldImportFacebookFriends = NO;
     anyErrorOccurredWhileImporting = NO;
     noOfTasksWaitingToBeCompleted = 0;
     int rowIdentifier = 2;
@@ -81,22 +82,31 @@ andIfFacebookFriendsShouldBeImported:(BOOL)importFacebookFriends {
 - (void)importPhoneContacts {
     [self showLoadingIndicator:self.loadingImage1];
 
-    NSMutableArray *addressBookContacts = [_addressBookContactsService fetchContactsFromAddressBook];
-    for (int i = 0; i < [addressBookContacts count]; i++) {
-        Contact *newContact = [addressBookContacts objectAtIndex:i];
-        [_contactDao addContact:newContact];
-    }
+    [_addressBookContactsService fetchContactsFromAddressBookAndDo:^(NSError *error, id returnedObject) {
+        BOOL successStatus = !error && returnedObject != nil;
+        if (successStatus) {
+            NSArray *addressBookContacts = returnedObject;
+            for (int i = 0; i < [addressBookContacts count]; i++) {
+                Contact *newContact = [addressBookContacts objectAtIndex:(NSUInteger) i];
+                NSLog(@"addressBookContactName: firstName=%@, lastName=%@", newContact.firstName, newContact.lastName);
+                [_contactDao addContact:newContact];
+            }
+            self.importingContactsLabel1.text = @"Imported phone contacts.";
+        } else {
+            self.importingContactsLabel1.text = @"Failed importing phone contacts.";
+        }
 
-    [self showIndicator:self.statusImage1 forStatus:TRUE andHide:self.loadingImage1];
-    self.importingContactsLabel1.text = @"Imported phone contacts.";
+        [self showIndicator:self.statusImage1 forStatus:successStatus andHide:self.loadingImage1];
 
-    [self doIfNoTasksAreWaiting];
+        [self doIfNoTasksAreWaiting];
+    }];
+
 }
 
 - (void)doIfNoTasksAreWaiting {
     noOfTasksWaitingToBeCompleted--;
     if (noOfTasksWaitingToBeCompleted <= 0 && !anyErrorOccurredWhileImporting) {
-        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
             sleep(5);
             dispatch_async(dispatch_get_main_queue(), ^{
                 NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];

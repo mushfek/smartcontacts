@@ -8,6 +8,6 @@
 
 @interface AddressBookContactsService : NSObject
 
-- (NSMutableArray *)fetchContactsFromAddressBook;
+- (void)fetchContactsFromAddressBookAndDo:(void (^)(NSError *, id))onResult;
 
 @end

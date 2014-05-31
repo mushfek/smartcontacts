@@ -7,12 +7,19 @@
 #import "Objection.h"
 #import "AppDelegate.h"
 #import "Contact.h"
+#import "Phone.h"
+#import "Address.h"
+#import "Mail.h"
+#import "SocialProfile.h"
+#import "Organization.h"
+#import "Url.h"
+#import "Im.h"
 
-@interface ContactDao() {
+@interface ContactDao () {
     NSManagedObjectContext *managedObjectContext;
 }
 
-@property (nonatomic, strong) NSMutableArray *contactList;
+@property(nonatomic, strong) NSMutableArray *contactList;
 
 @end
 
@@ -40,7 +47,7 @@ objection_register_singleton(ContactDao)
 
 - (void)addContact:(Contact *)contact {
     Contact *newContact = [NSEntityDescription insertNewObjectForEntityForName:@"Contact"
-                                                   inManagedObjectContext:managedObjectContext];
+                                                        inManagedObjectContext:managedObjectContext];
     [_contactList addObject:newContact];
 
     [newContact setValue:[NSNumber numberWithUnsignedInteger:contact.contactId] forKey:@"contactId"];
@@ -49,13 +56,22 @@ objection_register_singleton(ContactDao)
     [newContact setValue:contact.photo forKey:@"photo"];
     [newContact setValue:contact.notes forKey:@"notes"];
 
-    [newContact setValue:contact.phones forKey:@"phones"];
-    [newContact setValue:contact.addresses forKey:@"addresses"];
-    [newContact setValue:contact.organizations forKey:@"organizations"];
-    [newContact setValue:contact.mails forKey:@"mails"];
-    [newContact setValue:contact.ims forKey:@"ims"];
-    [newContact setValue:contact.socialProfiles forKey:@"socialProfiles"];
-    [newContact setValue:contact.urls forKey:@"urls"];
+    //The following One-to-Many relations aren't working...
+//    [newContact setValue:contact.phones forKey:@"phones"];
+//    [newContact setValue:contact.addresses forKey:@"addresses"];
+//    [newContact setValue:contact.organizations forKey:@"organizations"];
+//    [newContact setValue:contact.mails forKey:@"mails"];
+//    [newContact setValue:contact.ims forKey:@"ims"];
+//    [newContact setValue:contact.socialProfiles forKey:@"socialProfiles"];
+//    [newContact setValue:contact.urls forKey:@"urls"];
+    //Hack for the above..
+    [newContact setValue:((Phone *)[contact.phones anyObject]).phoneNumber forKey:@"phone"];
+    [newContact setValue:((Address *)[contact.addresses anyObject]).city forKey:@"address"];
+    [newContact setValue:((Organization *)[contact.organizations anyObject]).company forKey:@"organization"];
+    [newContact setValue:((Mail *)[contact.mails anyObject]).mailAddress forKey:@"mail"];
+    [newContact setValue:((Im *)[contact.ims anyObject]).imId forKey:@"im"];
+    [newContact setValue:((SocialProfile *)[contact.socialProfiles anyObject]).id forKey:@"socialProfile"];
+    [newContact setValue:((Url *)[contact.urls anyObject]).url forKey:@"url"];
 
     NSError *error = nil;
     if (![managedObjectContext save:&error]) {
@@ -93,7 +109,7 @@ objection_register_singleton(ContactDao)
     self.contactList = [[managedObjectContext executeFetchRequest:contactFetchRequest error:nil] mutableCopy];
 }
 
--(NSArray *)getContactList {
+- (NSArray *)getContactList {
     return _contactList;
 }
 
