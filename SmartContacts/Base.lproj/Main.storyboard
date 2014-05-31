@@ -7,7 +7,7 @@
         <!--Navigation Controller-->
         <scene sceneID="cUi-kZ-frf">
             <objects>
-                <navigationController id="rS3-R9-Ivy" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="contactListNavController" id="rS3-R9-Ivy" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="yXu-0R-QUA">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -17,18 +17,18 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eq9-QA-ai8" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="455" y="634"/>
+            <point key="canvasLocation" x="451" y="745"/>
         </scene>
         <!--Contact List View Controller - Master-->
         <scene sceneID="VgW-fR-Quf">
             <objects>
-                <tableViewController title="Master" id="pGg-6v-bdr" customClass="ContactListViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="contactListView" title="Master" id="pGg-6v-bdr" customClass="ContactListViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="45" sectionHeaderHeight="22" sectionFooterHeight="22" id="mLL-gJ-YKr">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search Contacts" id="14u-B8-fjw">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <rect key="frame" x="0.0" y="64" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
                             <connections>
@@ -37,7 +37,7 @@
                         </searchBar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" rowHeight="45" id="G3i-4o-T74" customClass="ContactListTableViewCell">
-                                <rect key="frame" x="0.0" y="66" width="320" height="45"/>
+                                <rect key="frame" x="0.0" y="130" width="320" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="G3i-4o-T74" id="Tzn-JT-TuC">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="44"/>
@@ -93,12 +93,12 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="906" y="640"/>
+            <point key="canvasLocation" x="950" y="745"/>
         </scene>
         <!--Import Contacts Credentials Input View Controller - Import Contacts-->
         <scene sceneID="uwU-q5-dii">
             <objects>
-                <viewController id="9CF-IZ-pTL" customClass="ImportContactsCredentialsInputViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="importContactsInputViewController" id="9CF-IZ-pTL" customClass="ImportContactsCredentialsInputViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ff4-sH-n1u"/>
                         <viewControllerLayoutGuide type="bottom" id="4lx-rv-ZFr"/>
@@ -186,7 +186,7 @@
                         <outlet property="importFacebookFriendsSwitch" destination="Dkp-Lj-a7X" id="dKQ-AF-90U"/>
                         <outlet property="scrollView" destination="Lf6-86-uCc" id="AiE-zT-XYf"/>
                         <segue destination="FK4-KB-7qe" kind="push" identifier="importContacts" id="KBZ-XJ-fnd"/>
-                        <segue destination="pGg-6v-bdr" kind="push" identifier="skipToContactList" id="uBp-HO-37Z"/>
+                        <segue destination="rS3-R9-Ivy" kind="modal" identifier="skipToContactList" id="7bo-Cj-73c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mUY-MH-yuO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -272,12 +272,12 @@
                         <outlet property="statusImage1" destination="Ntp-Sa-LDn" id="hGK-M4-qk3"/>
                         <outlet property="statusImage2" destination="5Xd-lN-4EN" id="k4H-5Q-SQc"/>
                         <outlet property="statusImage3" destination="U4D-Qd-TaQ" id="vMw-C0-0qR"/>
-                        <segue destination="pGg-6v-bdr" kind="push" identifier="showContactsList" id="yN5-98-f6d"/>
+                        <segue destination="rS3-R9-Ivy" kind="modal" identifier="showContactsList" id="VUs-j4-L79"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IlM-DY-DyN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="906" y="46"/>
+            <point key="canvasLocation" x="942" y="46"/>
         </scene>
         <!--Contact Details View Controller - Detail-->
         <scene sceneID="Cn3-H9-jdl">
@@ -288,7 +288,7 @@
                         <viewControllerLayoutGuide type="bottom" id="a0L-h9-sNL"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="MMQ-IT-qOo">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bTp-a2-aHv">
@@ -404,12 +404,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lrm-kH-fPn" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1359" y="640"/>
+            <point key="canvasLocation" x="1449" y="745"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="uy4-Vq-dmW">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hVh-CI-jaN" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="importContactNavController" automaticallyAdjustsScrollViewInsets="NO" id="hVh-CI-jaN" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Qeo-z4-8So">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -436,6 +436,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="uBp-HO-37Z"/>
+        <segue reference="VUs-j4-L79"/>
     </inferredMetricsTieBreakers>
 </document>

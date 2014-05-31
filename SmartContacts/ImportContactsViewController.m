@@ -49,6 +49,8 @@ andIfFacebookFriendsShouldBeImported:(BOOL)importFacebookFriends {
 }
 
 - (void)configureView {
+    self.navigationItem.hidesBackButton = YES;
+
     anyErrorOccurredWhileImporting = NO;
     noOfTasksWaitingToBeCompleted = 0;
     int rowIdentifier = 2;
@@ -93,10 +95,14 @@ andIfFacebookFriendsShouldBeImported:(BOOL)importFacebookFriends {
 
 - (void)doIfNoTasksAreWaiting {
     noOfTasksWaitingToBeCompleted--;
-    if (noOfTasksWaitingToBeCompleted == 0 && !anyErrorOccurredWhileImporting) {
+    if (noOfTasksWaitingToBeCompleted <= 0 && !anyErrorOccurredWhileImporting) {
         dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
             sleep(5);
             dispatch_async(dispatch_get_main_queue(), ^{
+                NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+                [userDefaults setObject:@"YES" forKey:@"contactsImported"];
+                [userDefaults synchronize];
+
                 [self performSegueWithIdentifier:@"showContactsList" sender:self];
             });
         });

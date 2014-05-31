@@ -34,6 +34,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"contactsImported"] isEqualToString:@"YES"]) {
+        [self performSegueWithIdentifier:@"skipToContactList" sender:self];
+        return;
+    }
+
     [self setupGestureToHideKeyboard];
 }
 
@@ -49,16 +54,19 @@
 
 - (IBAction)skipImportingContacts:(id)sender {
     [[[UIAlertView alloc]
-            initWithTitle:@"Skipping Contact Import!"
-                  message:@"Are you sure you want to skip?"
+            initWithTitle:@"Warning!"
+                  message:@"Are you sure you want to skip importing social contacts?"
                  delegate:self
-        cancelButtonTitle:nil
-        otherButtonTitles:@"Skip Contact Import", nil]
+        cancelButtonTitle:@"Cancel"
+        otherButtonTitles:@"Confirm Skip", nil]
             show];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    [self performSegueWithIdentifier:@"skipToContactList" sender:self];
+    if (![[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"Cancel"]) {
+        [self.importFacebookFriendsSwitch setOn:NO];
+        [self performSegueWithIdentifier:@"importContacts" sender:self];
+    }
 }
 
 - (IBAction)importContacts:(id)sender {
