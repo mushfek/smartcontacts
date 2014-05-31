@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Therap (BD) Ltd. All rights reserved.
 //
 
+#import <MessageUI/MessageUI.h>
 #import "ContactListViewController.h"
 
 #import "ContactDetailsViewController.h"
@@ -15,6 +16,8 @@
 #import "Phone.h"
 #import "ContactListTableViewCell.h"
 #import "NSString+NSStringExtension.h"
+#import "Mail.h"
+#import "Url.h"
 
 @interface ContactListViewController () {
     ContactDao *contactDao;
@@ -33,8 +36,23 @@ NSArray *searchResult;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self configureView];
+}
+
+- (void)configureView {
     [contactDao retrieveContactList];
     contacts = [contactDao getContactList];
+
+    //Add left swap recognizer
+    UISwipeGestureRecognizer *swipeRecognizer =
+            [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(onCellSwipedLeft:)];
+    [swipeRecognizer setDirection:UISwipeGestureRecognizerDirectionLeft];
+    [self.tableView addGestureRecognizer:swipeRecognizer];
+
+    //Add right swap recognizer
+    swipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(onCellSwipedRight:)];
+    [swipeRecognizer setDirection:UISwipeGestureRecognizerDirectionRight];
+    [self.tableView addGestureRecognizer:swipeRecognizer];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -61,7 +79,7 @@ NSArray *searchResult;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"Cell";
     ContactListTableViewCell *cell =
-            (ContactListTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            (ContactListTableViewCell *) [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 
     if (cell == nil) {
         cell = [[ContactListTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
@@ -117,6 +135,75 @@ NSArray *searchResult;
     return cell;
 }
 
+- (void)onCellSwipedLeft:(UIGestureRecognizer *)swipeRecognizer {
+    CGPoint point = [swipeRecognizer locationInView:self.tableView];
+    NSIndexPath *indexPath = [(UITableView *) self.view indexPathForRowAtPoint:point];
+    if (indexPath != nil) {
+        Contact *contact = nil;
+        if (self.tableView == self.searchDisplayController.searchResultsTableView) {
+            contact = [searchResult objectAtIndex:(NSUInteger) indexPath.row];
+        } else {
+            contact = [contacts objectAtIndex:(NSUInteger) indexPath.row];
+        }
+        if ([contact.phones count] > 0) {   //Send SMS if mobile number exists
+            Phone *phone = (Phone *) [contact.phones anyObject];
+
+            MFMessageComposeViewController *smsComposeViewController = [[MFMessageComposeViewController alloc] init];
+            smsComposeViewController.recipients = @[phone.phoneNumber];
+            smsComposeViewController.messageComposeDelegate = self;
+
+            [self presentViewController:smsComposeViewController animated:YES completion:nil];
+        } else if ([contact.urls count] > 0) {    //start browsing if website exists
+            Url *url = (Url *) [contact.urls anyObject];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url.url]];
+        } else {
+            NSLog(@"Couldn't perform any action on left swipe.");
+        }
+    }
+}
+
+- (void)onCellSwipedRight:(UIGestureRecognizer *)swipeRecognizer {
+    CGPoint point = [swipeRecognizer locationInView:self.tableView];
+    NSIndexPath *indexPath = [(UITableView *) self.view indexPathForRowAtPoint:point];
+    if (indexPath != nil) {
+        Contact *contact = nil;
+        if (self.tableView == self.searchDisplayController.searchResultsTableView) {
+            contact = [searchResult objectAtIndex:(NSUInteger) indexPath.row];
+        } else {
+            contact = [contacts objectAtIndex:(NSUInteger) indexPath.row];
+        }
+
+        if ([contact.phones count] > 0) {   //Call if mobile number exists
+            Phone *phone = (Phone *) [contact.phones anyObject];
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:concat(@"telprompt://", phone.phoneNumber)]];
+        } else if ([contact.mails count] > 0) {    //start mailing if email exists
+            Mail *email = (Mail *) [contact.mails anyObject];
+
+            MFMailComposeViewController *mailComposeViewController = [[MFMailComposeViewController alloc] init];
+            [mailComposeViewController setToRecipients:@[email.mailAddress]];
+            mailComposeViewController.mailComposeDelegate = self;
+
+            [self presentViewController:mailComposeViewController animated:YES completion:nil];
+        } else {
+            NSLog(@"Couldn't perform any action on right swipe.");
+        }
+    }
+}
+
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller
+                 didFinishWithResult:(MessageComposeResult)result {
+
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller
+          didFinishWithResult:(MFMailComposeResult)result
+                        error:(NSError *)error {
+
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     return NO;
 }
@@ -133,19 +220,20 @@ NSArray *searchResult;
     }
 }
 
-- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope {
+- (void)filterContentForSearchText:(NSString *)searchText scope:(NSString *)scope {
     NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"firstName contains[c] %@", searchText];
     searchResult = [contacts filteredArrayUsingPredicate:resultPredicate];
 }
 
--(BOOL)searchDisplayController:(UISearchDisplayController *)controller
-        shouldReloadTableForSearchString:(NSString *)searchString {
+- (BOOL) searchDisplayController:(UISearchDisplayController *)controller
+shouldReloadTableForSearchString:(NSString *)searchString {
     [self filterContentForSearchText:searchString
                                scope:[[self.searchDisplayController.searchBar scopeButtonTitles]
                                        objectAtIndex:(NSUInteger) [self.searchDisplayController.searchBar
-                                                                                      selectedScopeButtonIndex]]];
+                                               selectedScopeButtonIndex]]];
 
     return YES;
 }
+
 
 @end
