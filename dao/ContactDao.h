@@ -17,4 +17,6 @@
 
 - (Contact *)getContactById:(Contact *)contact;
 
+- (void)retrieveContactList;
+
 @end

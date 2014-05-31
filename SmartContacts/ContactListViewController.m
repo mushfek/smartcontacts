@@ -9,39 +9,57 @@
 #import "ContactListViewController.h"
 
 #import "ContactDetailsViewController.h"
+#import "ContactDao.h"
+#import "ObjectionExtension.h"
+#import "Contact.h"
+#import "Phone.h"
+#import "ContactListTableViewCell.h"
+#import "NSString+NSStringExtension.h"
 
-@interface ContactListViewController ()
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
+@interface ContactListViewController () {
+    ContactDao *contactDao;
+}
 @end
 
 @implementation ContactListViewController
 
-- (void)awakeFromNib
-{
+- (void)awakeFromNib {
+    contactDao = objection_inject(ContactDao);
     [super awakeFromNib];
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
+    [contactDao retrieveContactList];
 	// Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
+    UIBarButtonItem *addButton =
+            [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                          target:self
+                                                          action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)viewWillAppear:(BOOL)animated {
+    [(UITableView *) self.view reloadData];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    NSLog(@"Number of Entries: %d", [contactDao contactCount]);
+    return [contactDao contactCount];
+}
+
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-- (void)insertNewObject:(id)sender
-{
+- (void)insertNewObject:(id)sender {
     NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
     NSEntityDescription *entity = [[self.fetchedResultsController fetchRequest] entity];
-    NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:context];
+    NSManagedObject *newManagedObject =
+            [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:context];
 
     // If appropriate, configure the new managed object.
     // Normally you should use accessor methods, but using KVC here avoids the need to add a custom class to the template.
@@ -59,32 +77,63 @@
 
 #pragma mark - Table View
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 0;// [[self.fetchedResultsController sections] count];
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;// [[self.fetchedResultsController sections] count];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
-    return 0;// [sectionInfo numberOfObjects];
-}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    ContactListTableViewCell *cell = (ContactListTableViewCell *)
+            [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    [self configureCell:cell atIndexPath:indexPath];
+    Contact *contact = [contactDao contactAtIndex:(NSUInteger) indexPath.row];
+
+    NSString *fullName;
+    if (contact.firstName != nil) {
+        fullName = contact.firstName;
+        if (contact.lastName != nil) {
+            fullName = concat(fullName, @" ", contact.lastName);
+        }
+    } else {
+        if (contact.lastName != nil) {
+            fullName = contact.lastName;
+        }
+    }
+
+    cell.contactNameLabel.text = fullName;
+    if ([contact.phones count] > 0) {
+        NSArray *phoneNumbers = [contact.phones allObjects];
+        Phone *phone = [phoneNumbers objectAtIndex:0];
+
+        NSString *phoneString;
+        if (phone.type != nil) {
+            phoneString = phone.type;
+            if (phone.phoneNumber != nil) {
+                phoneString = concat(phoneString, @" (", phone.phoneNumber, @")");
+            }
+            cell.contactSubtitleLabel.text = phoneString;
+        } else {
+            if (phone.phoneNumber != nil) {
+                cell.contactSubtitleLabel.text = phone.phoneNumber;
+            } else {
+                cell.contactSubtitleLabel.text = @"";
+            }
+        }
+    } else {
+        cell.contactSubtitleLabel.text = @"";
+    }
+    UIImage *image = [UIImage imageWithData:contact.photo];
+    [cell.contactPhoto setImage:image];
+
     return cell;
 }
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return NO if you do not want the specified item to be editable.
-    return YES;
+    return NO;
 }
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+            forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
         [context deleteObject:[self.fetchedResultsController objectAtIndexPath:indexPath]];
@@ -99,14 +148,12 @@
     }
 }
 
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
     // The table view should not be re-orderable.
     return NO;
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
@@ -116,8 +163,7 @@
 
 #pragma mark - Fetched results controller
 
-- (NSFetchedResultsController *)fetchedResultsController
-{
+- (NSFetchedResultsController *)fetchedResultsController {
     if (_fetchedResultsController != nil) {
         return _fetchedResultsController;
     }
@@ -153,14 +199,12 @@
     return _fetchedResultsController;
 }
 
-- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
-{
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
     [self.tableView beginUpdates];
 }
 
 - (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
-           atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type
-{
+           atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
     switch(type) {
         case NSFetchedResultsChangeInsert:
             [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
@@ -174,8 +218,7 @@
 
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
        atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
-      newIndexPath:(NSIndexPath *)newIndexPath
-{
+      newIndexPath:(NSIndexPath *)newIndexPath {
     UITableView *tableView = self.tableView;
 
     switch(type) {
@@ -188,7 +231,6 @@
             break;
 
         case NSFetchedResultsChangeUpdate:
-            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
             break;
 
         case NSFetchedResultsChangeMove:
@@ -198,25 +240,8 @@
     }
 }
 
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
-{
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
     [self.tableView endUpdates];
-}
-
-/*
-// Implementing the above methods to update the table view in response to individual changes may have performance implications if a large number of changes are made simultaneously. If this proves to be an issue, you can instead just implement controllerDidChangeContent: which notifies the delegate that all section and object changes have been processed.
-
- - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
-{
-    // In the simplest, most efficient, case, reload the table view.
-    [self.tableView reloadData];
-}
- */
-
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
-{
-    NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = [[object valueForKey:@"timeStamp"] description];
 }
 
 @end

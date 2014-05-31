@@ -89,4 +89,10 @@ objection_register_singleton(ContactDao)
     return [contactByIdFetchResults objectAtIndex:0];
 }
 
+- (void)retrieveContactList {
+    //Fetch card from Core Data
+    NSFetchRequest *contactFetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Contact"];
+    self.contactList = [[managedObjectContext executeFetchRequest:contactFetchRequest error:nil] mutableCopy];
+}
+
 @end
