@@ -92,6 +92,8 @@ objection_requires(@"contactDao")
 
             [contact setAddresses:emails];
             [_contactDao addContact:contact];
+
+            NSLog(@"googlePlusContactName: firstName=%@, lastName=%@", contact.firstName, contact.lastName);
         }
 
         onResultBlock(nil, nil);

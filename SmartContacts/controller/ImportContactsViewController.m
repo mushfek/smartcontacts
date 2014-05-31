@@ -51,7 +51,6 @@ andIfFacebookFriendsShouldBeImported:(BOOL)importFacebookFriends {
 - (void)configureView {
     self.navigationItem.hidesBackButton = YES;
 
-    shouldImportFacebookFriends = NO;
     anyErrorOccurredWhileImporting = NO;
     noOfTasksWaitingToBeCompleted = 0;
     int rowIdentifier = 2;

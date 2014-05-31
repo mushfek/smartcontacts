@@ -219,7 +219,14 @@ NSArray *searchResult;
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        Contact *contact = [contactDao contactAtIndex:(NSUInteger) indexPath.row];
+
+        Contact *contact = nil;
+        if (self.tableView == self.searchDisplayController.searchResultsTableView) {
+            contact = [searchResult objectAtIndex:(NSUInteger) indexPath.row];
+        } else {
+            contact = [contacts objectAtIndex:(NSUInteger) indexPath.row];
+        }
+
         [(ContactDetailsViewController *)[segue destinationViewController] setDetailItem:contact];
     }
 }

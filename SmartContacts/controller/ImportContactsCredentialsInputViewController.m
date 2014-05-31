@@ -34,10 +34,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"contactsImported"] isEqualToString:@"YES"]) {
-        [self performSegueWithIdentifier:@"skipToContactList" sender:self];
-        return;
-    }
+//    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"contactsImported"] isEqualToString:@"YES"]) {
+//        [self performSegueWithIdentifier:@"skipToContactList" sender:self];
+//        return;
+//    }
 
     [self setupGestureToHideKeyboard];
 }
