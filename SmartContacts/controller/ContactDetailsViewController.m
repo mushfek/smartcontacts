@@ -17,17 +17,14 @@
 
 @implementation ContactDetailsViewController
 
-- (void)configureView {
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     [self configureView];
-    [self assignContactInformation];
 }
 
-- (void)assignContactInformation {
+- (void)configureView {
     self.contactPhoto.image = [UIImage imageWithData:self.detailItem.photo];
 
     NSString *contactFullName;
@@ -48,8 +45,6 @@
     self.contactOrganization.text = [[self.detailItem.organizations anyObject] stringValue];
     self.contactSocialProfile.text = [[self.detailItem.socialProfiles anyObject] stringValue];
     self.contactUrl.text = [[self.detailItem.urls anyObject] stringValue];
-}
-- (IBAction)editButtonPressed:(id)sender {
 }
 
 @end
