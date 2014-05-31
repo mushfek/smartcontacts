@@ -23,6 +23,9 @@
 
 @implementation ContactListViewController
 
+NSArray *contacts;
+NSArray *searchResult;
+
 - (void)awakeFromNib {
     contactDao = objection_inject(ContactDao);
     [super awakeFromNib];
@@ -31,7 +34,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [contactDao retrieveContactList];
-	// Do any additional setup after loading the view, typically from a nib.
+    contacts = [contactDao getContactList];
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
     UIBarButtonItem *addButton =
@@ -46,13 +49,16 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSLog(@"Number of Entries: %d", [contactDao contactCount]);
-    return [contactDao contactCount];
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        return [searchResult count];
+
+    } else {
+        return [contacts count];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)insertNewObject:(id)sender {
@@ -61,31 +67,39 @@
     NSManagedObject *newManagedObject =
             [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:context];
 
-    // If appropriate, configure the new managed object.
-    // Normally you should use accessor methods, but using KVC here avoids the need to add a custom class to the template.
     [newManagedObject setValue:[NSDate date] forKey:@"timeStamp"];
 
-    // Save the context.
     NSError *error = nil;
     if (![context save:&error]) {
-         // Replace this implementation with code to handle the error appropriately.
-         // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
 }
 
-#pragma mark - Table View
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 71;
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;// [[self.fetchedResultsController sections] count];
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    ContactListTableViewCell *cell = (ContactListTableViewCell *)
-            [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    static NSString *CellIdentifier = @"Cell";
+    ContactListTableViewCell *cell =
+            (ContactListTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 
-    Contact *contact = [contactDao contactAtIndex:(NSUInteger) indexPath.row];
+    if (cell == nil) {
+        cell = [[ContactListTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                               reuseIdentifier:CellIdentifier];
+    }
+
+    Contact *contact = nil;
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        contact = [searchResult objectAtIndex:(NSUInteger) indexPath.row];
+    } else {
+        contact = [contacts objectAtIndex:(NSUInteger) indexPath.row];
+    }
 
     NSString *fullName;
     if (contact.firstName != nil) {
@@ -100,6 +114,7 @@
     }
 
     cell.contactNameLabel.text = fullName;
+
     if ([contact.phones count] > 0) {
         NSArray *phoneNumbers = [contact.phones allObjects];
         Phone *phone = [phoneNumbers objectAtIndex:0];
@@ -121,6 +136,7 @@
     } else {
         cell.contactSubtitleLabel.text = @"";
     }
+
     UIImage *image = [UIImage imageWithData:contact.photo];
     [cell.contactPhoto setImage:image];
 
@@ -128,7 +144,6 @@
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
     return NO;
 }
 
@@ -140,8 +155,6 @@
 
         NSError *error = nil;
         if (![context save:&error]) {
-             // Replace this implementation with code to handle the error appropriately.
-             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
             abort();
         }
@@ -149,7 +162,6 @@
 }
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // The table view should not be re-orderable.
     return NO;
 }
 
@@ -169,29 +181,26 @@
     }
 
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    // Edit the entity name as appropriate.
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Event" inManagedObjectContext:self.managedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Event"
+                                              inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
 
-    // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
 
-    // Edit the sort key as appropriate.
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"timeStamp" ascending:NO];
     NSArray *sortDescriptors = @[sortDescriptor];
 
     [fetchRequest setSortDescriptors:sortDescriptors];
 
-    // Edit the section name key path and cache name if appropriate.
-    // nil for section name key path means "no sections".
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"Master"];
+    NSFetchedResultsController *aFetchedResultsController =
+            [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                                managedObjectContext:self.managedObjectContext
+                                                  sectionNameKeyPath:nil cacheName:@"Master"];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
 
 	NSError *error = nil;
 	if (![self.fetchedResultsController performFetch:&error]) {
-	     // Replace this implementation with code to handle the error appropriately.
-	     // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
 	    NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
 	    abort();
 	}
@@ -203,15 +212,18 @@
     [self.tableView beginUpdates];
 }
 
-- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
+- (void)controller:(NSFetchedResultsController *)controller
+                    didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
            atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
     switch(type) {
         case NSFetchedResultsChangeInsert:
-            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex]
+                          withRowAnimation:UITableViewRowAnimationFade];
             break;
 
         case NSFetchedResultsChangeDelete:
-            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex]
+                          withRowAnimation:UITableViewRowAnimationFade];
             break;
     }
 }
@@ -242,6 +254,21 @@
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
     [self.tableView endUpdates];
+}
+
+- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope {
+    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"firstName contains[c] %@", searchText];
+    searchResult = [contacts filteredArrayUsingPredicate:resultPredicate];
+}
+
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller
+        shouldReloadTableForSearchString:(NSString *)searchString {
+    [self filterContentForSearchText:searchString
+                               scope:[[self.searchDisplayController.searchBar scopeButtonTitles]
+                                       objectAtIndex:(NSUInteger) [self.searchDisplayController.searchBar
+                                                                                      selectedScopeButtonIndex]]];
+
+    return YES;
 }
 
 @end

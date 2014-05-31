@@ -93,4 +93,8 @@ objection_register_singleton(ContactDao)
     self.contactList = [[managedObjectContext executeFetchRequest:contactFetchRequest error:nil] mutableCopy];
 }
 
+-(NSArray *)getContactList {
+    return _contactList;
+}
+
 @end
