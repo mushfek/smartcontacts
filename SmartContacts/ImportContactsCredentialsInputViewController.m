@@ -13,12 +13,14 @@
 #import "NSString+FormInputValidation.h"
 #import "ImportContactsViewController.h"
 #import "MBProgressHUD.h"
+#import "AddressBookContactsService.h"
 
 
 @implementation ImportContactsCredentialsInputViewController {
     GoogleContactsService *_googleContactsService;
     FacebookContactsService *_facebookContactsService;
     MBProgressHUD *_mbProgressHUD;
+    AddressBookContactsService *_addressBookContactsService;
 }
 
 - (void)awakeFromNib {
@@ -26,6 +28,7 @@
 
     _googleContactsService = objection_inject(GoogleContactsService)
     _facebookContactsService = objection_inject(FacebookContactsService)
+    _addressBookContactsService = objection_inject(AddressBookContactsService)
 }
 
 - (void)viewDidLoad {

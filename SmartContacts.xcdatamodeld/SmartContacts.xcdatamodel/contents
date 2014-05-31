@@ -55,7 +55,7 @@
         <relationship name="contacts" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Contact" inverseName="urls" inverseEntity="Contact" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Contact" positionX="-236" positionY="2" width="128" height="223"/>
+        <element name="Contact" positionX="-254" positionY="11" width="128" height="223"/>
         <element name="Address" positionX="-450" positionY="-54" width="128" height="133"/>
         <element name="Im" positionX="-72" positionY="-54" width="128" height="88"/>
         <element name="Mail" positionX="36" positionY="263" width="128" height="88"/>
